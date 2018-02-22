@@ -18,7 +18,6 @@
     		    width: 350,
     		    modal: true,
     		    resizable:false,
-    		    title: "<spring:message code="wechat.service.account.new"/>",
     		    position: {
     		    	my: "center",
     		    	at: "center",
@@ -46,13 +45,20 @@
     		$("#img-new-service-account").click(function() {
     			$("#ifrm-popup-content", parent.document).attr('src', '${pageContext.request.contextPath}/service/createServiceAccount.do');
     			$("#ifrm-popup-content", parent.document).dialog("open");
+    			var dialogOpts = {
+        				title: "<spring:message code="wechat.service.account.new"/>"
+        		}
+        		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
     		});
     	});
     	
     	function editaccount(accountId) {
     		$("#ifrm-popup-content", parent.document).attr('src', '${pageContext.request.contextPath}/service/updateServiceAccount.do?id='+accountId);
-    		$("#ifrm-popup-content", parent.document).dialog("title", "<spring:message code="wechat.service.account"/>");
     		$("#ifrm-popup-content", parent.document).dialog("open");
+    		var dialogOpts = {
+    				title: "<spring:message code="wechat.service.account"/>"
+    		}
+    		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
     	}
     </script>
     <style type="text/css">

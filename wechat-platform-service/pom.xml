@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xyh.wechat.root</groupId>
+    <artifactId>wechat-platform-root</artifactId>
+    <version>${project.version}</version>
+  </parent>
+  <groupId>com.xyh.wechat.service</groupId>
+  <artifactId>wechat-platform-service</artifactId>
+  <name>wechat-platform-service</name>
+  <properties>
+    <project.version>0.0.1-SNAPSHOT</project.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <dependencies>  
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>4.3.12.RELEASE</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.xyh.wechat.dao</groupId>
+    	<artifactId>wechat-platform-dao</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.xyh.wechat.convertor</groupId>
+    	<artifactId>wechat-platform-convertor</artifactId>
+    	<version>${project.version}</version>
+    </dependency> 
+  </dependencies>
+</project>

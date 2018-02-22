@@ -1,0 +1,7 @@
+com\xyh\wechat\util\convertor\platform\PlatformUserConvertor.class
+com\xyh\wechat\util\WeChatPlatformPageUtil.class
+com\xyh\wechat\util\WeChatPlatformPage.class
+com\xyh\wechat\util\convertor\BaseConvertor.class
+com\xyh\wechat\util\WeChatPlatformMath.class
+com\xyh\wechat\util\WeChatPlatformConstants.class
+com\xyh\wechat\util\WeChatPlatformPageState.class

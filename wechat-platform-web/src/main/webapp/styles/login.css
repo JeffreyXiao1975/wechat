@@ -1,0 +1,306 @@
+@charset "utf-8";
+
+/********** reset **********/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	color: #000;
+	background-color: #fff;
+	overflow: auto;
+}
+
+/********** #layoutTable **********/
+#layoutTable {
+	width: 100%;
+	height: 100%;
+	border-collapse: collapse;
+}
+
+#layoutTable td {
+}
+
+#layoutTable td.top {
+	font-size: 0px;
+	background-color: #86d8e3;
+}
+
+#layoutTable td.bottom {
+	font-size: 0px;
+	background-color: #fff;
+}
+
+#layoutTable td.middle {
+	height: 586px;
+}
+
+/********** #container **********/
+#container {
+	height: 586px;
+	background: url("../images/login/login_bg.jpg");
+	text-align: center;
+}
+
+/********** #logo **********/
+#logo {
+	height: 75px;
+	margin-left: 20px;
+}
+
+#logo img {
+	display: block;
+	float: left;
+}
+
+/********** #login **********/
+#login {
+	clear: both;
+	width: 799px;
+	height: 316px;
+	margin-top: 70px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	background: url("../images/login/login.jpg");
+}
+
+#login div {
+	position: absolute;
+}
+
+#login .info_div {
+	width: 208px;
+	height: 22px;
+	line-height: 22px;
+	top: 35px;
+	left: 323px;
+	overflow: hidden;
+}
+
+#login .info_div span {
+	font-size: 13px;
+	letter-spacing: 1px;
+	color: #ff6100;
+}
+
+#login .username_div {
+	top: 95px;
+	left: 323px;
+}
+
+#login .password_div {
+	top: 142px;
+	left: 323px;
+}
+
+#login .username_div input,
+#login .password_div input {
+	width: 208px;
+	height: 20px;
+	font-size: 16px;
+	border: none;
+	background: transparent;
+}
+
+#login .check_div {
+	top: 175px;
+	left: 320px;
+}
+
+#login .forget_div {
+	top: 177px;
+	left: 465px;
+	font-size:14px;
+}
+
+
+#login .check_div input {
+	width: 16px;
+	height: 16px;
+	border: 1px solid #ccc;
+}
+
+#login .check_div label {
+	font-size: 14px;
+	color: #025d7b;
+}
+
+#login .submit_div {
+	top: 205px;
+	left: 350px;
+}
+
+#login .submit_div input {
+	width: 85px;
+	height: 27px;
+	color: #fff;
+	font-size: 14px;
+	letter-spacing: 2px;
+	background: url("../images/login/submit.gif");
+	border: none;
+	cursor: pointer;
+}
+
+/********** .block **********/
+.block {
+	height: 106px;
+	display: none;
+}
+
+.block p {
+	height: 22px;
+	line-height: 22px;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	color: green;
+}
+
+.block .confirm {
+	width: 49px;
+	height: 21px;
+	color: #05447a;
+	border: none;
+	cursor: pointer;
+	background: url("../images/btn.gif");
+}
+
+#screen_value,
+#browser_type {
+	color: #0000ff;
+}
+
+#base_value,
+#browser_support {
+	color: #ff6100;
+}
+
+/*主页弹出层*/
+.block_div {
+	width: 330px;
+	border: 1px solid #ccc;
+	display: none;
+}
+
+.block_div .title {
+	height: 22px;
+	line-height: 22px;
+	margin: 1px;
+	font-weight: bold;
+	color: #234369;
+	text-align: center;
+	letter-spacing: 1px;
+	background-color: #96c2f1;
+}
+
+.block_div div.btns {
+	text-align: center;
+}
+
+.data_tab {
+	width: 100%;
+	border-collapse:collapse;
+}
+
+.data_tab tr.odd {
+	background-color: #f7f7f7;
+}
+
+.data_tab tr.even {
+	background-color: #e2eaf8;
+}
+
+.data_tab th,
+.data_tab td {
+	height: 24px;
+	padding-left: 2px;
+	border: 1px solid #fff;
+}
+
+.data_tab th {
+	color: #fff;
+	padding-left: 0px;
+	background: url("../images/th_bg.jpg") left center;
+	overflow: hidden;
+	text-align:center;
+}
+
+.data_tab td.align_m {
+	padding-left: 0px;
+	text-align: center;
+}
+
+.data_tab td.align_r {
+	padding-left: 0px;
+	text-align: right;
+}
+
+.data_tab td, 
+.data_tab td a {
+	color: #4d4c4c;
+}
+
+.data_tab tr.select td,
+.data_tab tr.select td a{
+	color: #ee0000;
+}
+
+.data_tab tr.over td,
+.data_tab tr.over td a {
+	color: #eb6100;
+}
+
+.data_tab a {
+	text-decoration: underline;
+}
+.btn_div{
+	text-align:center;
+}
+.btn {
+	width: 66px;
+	height: 22px;
+	color: #000;
+	border: none;
+	cursor: pointer;
+	background: url("../images/btn.gif");
+}
+.btn01 {
+	width: 120px;
+	height: 22px;
+	color: #000;
+	border: none;
+	cursor: pointer;
+	background: url("../images/btn0120.gif");
+}
+
+.block_tab {
+	width: 330px;
+	table-layout: fixed;
+	margin: 0px auto;
+	color: #4d4c4c;
+}
+
+.block_tab td {
+	height: 30px;
+		border: 0px solid red;
+}
+
+.block_tab .label {
+	width: 85px;
+	text-align: right;
+}
+
+.block_tab textarea.long {
+	width: 564px;
+}
+
+.block_tab .text.long,
+.block_tab .text.addr {
+	width: 340px;
+}

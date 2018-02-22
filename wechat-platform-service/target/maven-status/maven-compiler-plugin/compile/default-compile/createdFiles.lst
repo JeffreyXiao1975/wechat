@@ -1,0 +1,3 @@
+com\xyh\wechat\service\BaseService.class
+com\xyh\wechat\service\platform\PlatformUserServiceImpl.class
+com\xyh\wechat\service\platform\IPlatformUserService.class

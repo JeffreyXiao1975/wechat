@@ -1,0 +1,11 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.xyh.wechat.root</groupId>
+    <artifactId>wechat-platform-root</artifactId>
+    <version>${project.version}</version>
+  </parent>
+  <groupId>com.xyh.wechat.vo</groupId>
+  <artifactId>wechat-platform-vo</artifactId>
+  <name>wechat-platform-vo</name>
+</project>

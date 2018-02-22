@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.xyh.wechat.root</groupId>
+  <artifactId>wechat-platform-root</artifactId>
+  <version>${project.version}</version>
+  <packaging>pom</packaging>
+  <name>wechat-platform-root</name>
+  <repositories>
+  	<repository>
+  	  <id>maven search repository</id> 
+  	  <name>maven search repository</name> 
+  	  <url>http://www.mvnsearch.org/maven2</url> 
+	  <snapshots>
+  		<enabled>true</enabled> 
+  	  </snapshots>
+  	</repository>
+  	<repository>
+  	  <id>eclipselink repository</id> 
+  	  <name>eclipselink repository</name> 
+  	  <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
+	  <snapshots>
+  		<enabled>true</enabled> 
+  	  </snapshots>
+  	</repository>
+  	<repository>
+  		<id>springsource-repo</id> 
+  		<name>SpringSource Repository</name> 
+  		<url>http://repo.springsource.org/release</url> 
+  	</repository>
+  </repositories>
+  <dependencies>
+  	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  	<dependency>
+  			<groupId>log4j</groupId>
+  			<artifactId>log4j</artifactId>
+  			<version>1.2.17</version>
+  			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+				  	<groupId>com.sun.jdmk</groupId>
+				  	<artifactId>jmxtools</artifactId>
+				</exclusion>
+			</exclusions>
+  	</dependency>
+  </dependencies>  
+  <modules>
+    <module>wechat-platform-web</module>
+    <module>wechat-platform-jpa</module>
+    <module>wechat-platform-service</module>
+    <module>wechat-platform-dao</module>
+    <module>wechat-platform-util</module>
+    <module>wechat-platform-vo</module>
+    <module>wechat-platform-model</module>
+    <module>wechat-platform-convertor</module>
+  </modules>
+  <properties>
+    <project.version>0.0.1-SNAPSHOT</project.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>  
+</project>

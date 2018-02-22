@@ -1,0 +1,5 @@
+com\xyh\wechat\jpa\entities\WxSubscriptionAccount.class
+com\xyh\wechat\jpa\entities\WxBaseEntity.class
+com\xyh\wechat\jpa\entities\WxServiceAccount.class
+com\xyh\wechat\jpa\entities\WxPlatformUser.class
+com\xyh\wechat\jpa\entities\WxEnterpriseAccount.class

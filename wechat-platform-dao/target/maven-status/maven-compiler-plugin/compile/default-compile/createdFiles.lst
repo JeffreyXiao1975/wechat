@@ -1,0 +1,9 @@
+com\xyh\wechat\dao\BaseDao.class
+com\xyh\wechat\dao\platform\IPlatformUserDao.class
+com\xyh\wechat\dao\platform\PlatformUserDaoImpl.class
+com\xyh\wechat\dao\service\IServiceAccountDao.class
+com\xyh\wechat\dao\service\ServiceAccountDaoImpl.class
+com\xyh\wechat\dao\enterprise\IEnterpriseAccountDao.class
+com\xyh\wechat\dao\subscription\ISubscriptionAccountDao.class
+com\xyh\wechat\dao\enterprise\EnterpriseAccountDaoImpl.class
+com\xyh\wechat\dao\subscription\SubscriptionAccountDaoImpl.class

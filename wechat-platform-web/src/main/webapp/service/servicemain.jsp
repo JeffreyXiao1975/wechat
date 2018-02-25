@@ -7,9 +7,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui.css"/>
+    <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/styles//jquery-confirm.min.css"/>  -->
     <script src="${pageContext.request.contextPath}/scripts/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/scripts/jquery-ui.js"></script>
-    
+    <!-- <script src="${pageContext.request.contextPath}/scripts/jquery-confirm.min.js"></script> -->
     <script type="text/javascript">
     	$(function() {
     		$("#ifrm-popup-content", parent.document).dialog({
@@ -29,17 +30,7 @@
     		    			$( this ).css( "top", pos.top - topOffset );
     		    		}
     		    	}
-    		    },
-    		    //buttons:{
-    		    	//<spring:message code="button.create"/>: function() {
-    		    		//alert($("#ifrm-popup-content", parent.document).text());
-    		    		//alert(ss);
-    		    		//$("#frmCreateServiceAccount").submit();
-    		    	//},
-    		    	//<spring:message code="button.cancel"/>: function() {  
-    		    		//$(this).dialog('close');  
-    		    	//} 
-    		    //}
+    		    }
 			});
     		 
     		$("#img-new-service-account").click(function() {
@@ -52,11 +43,54 @@
     		});
     	});
     	
-    	function editaccount(accountId) {
+    	function viewAccount(accountId) {
+    		$("#ifrm-popup-content", parent.document).attr('src', '${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+accountId);
+    		$("#ifrm-popup-content", parent.document).dialog("open");
+    		var dialogOpts = {
+    				title: "<spring:message code="wechat.service.account"/>"
+    		}
+    		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
+    	}	
+    	
+    	function updateAccount(accountId) {
     		$("#ifrm-popup-content", parent.document).attr('src', '${pageContext.request.contextPath}/service/updateServiceAccount.do?id='+accountId);
     		$("#ifrm-popup-content", parent.document).dialog("open");
     		var dialogOpts = {
     				title: "<spring:message code="wechat.service.account"/>"
+    		}
+    		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
+    	}
+    	
+    	function disableAccount(accountId) {
+    		$("#ifrm-popup-content", parent.document).dialog("open");
+    		var dialogOpts = {
+    				title: "Are you sure to disable this service account?",
+    				content:"Are you sure to delete this service account?",
+    				buttons:{
+        		    	<spring:message code="button.confirm"/>: function() {
+        		    		
+        		    	},
+        		    	<spring:message code="button.cancel"/>: function() {  
+        		    		$(this).dialog('close');  
+        		    	} 
+        		    }
+    		}
+    		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
+    	} 
+    	
+    	function deleteAccount(accountId) {
+    		$("#ifrm-popup-content", parent.document).dialog("open");
+    		var dialogOpts = {
+    			title: "Are you sure to delete this service account?",
+    			content:"Are you sure to delete this service account?",
+    				buttons:{
+        		    	<spring:message code="button.confirm"/>: function() {
+        		    		
+        		    	},
+        		    	<spring:message code="button.cancel"/>: function() {  
+        		    		$(this).dialog('close');  
+        		    	} 
+        		    }	
     		}
     		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
     	}
@@ -87,7 +121,7 @@
       	}
       	
       	.activeaccount a:link{text-decoration: none;}
-        .activeaccount a img{position:relative; width:12px; height:12px; padding:2px; border:1px solid #cfcfcf; top:-60px; left:90px;}
+        .activeaccount a img{position:relative; width:12px; height:12px; padding:2px; border:1px solid #cfcfcf; top:-60px; left:30px;}
         .activeaccount a:hover img{ border-color:#8ECFF9;}
         .activeaccount span{left:-120px; top:0px;}
       
@@ -140,11 +174,17 @@
 	        <c:if test="${serviceAccountVo.disabled == false}">
 	          <c:if test="${serviceAccountVo.deleted == false}">
 	            <div class="activeaccount">
-	              <a href="#" onclick="javascript:editaccount('${serviceAccountVo.id}');">
-	                 <img src="${pageContext.request.contextPath}/images/edit.gif" title="<spring:message code="button.update"/>"/>
+	              <a href="#" onclick="javascript:viewAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/view.png" title="<spring:message code="button.view"/>"/>
 	               </a>
-	               <a href="#" onclick="">
-	                 <img src="${pageContext.request.contextPath}/images/delete.gif" title="<spring:message code="button.delete"/>"/>
+	               <a href="#" onclick="javascript:updateAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/update.png" title="<spring:message code="button.update"/>"/>
+	               </a>
+	               <a href="#" onclick="javascript:disableAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/disable.png" title="<spring:message code="button.disable"/>"/>
+	               </a>
+	               <a href="#" onclick="javascript:deleteAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/delete.png" title="<spring:message code="button.delete"/>"/>
 	               </a>
 	              <span><c:out value="${serviceAccountVo.accountName}"/></span>
 	            </div>

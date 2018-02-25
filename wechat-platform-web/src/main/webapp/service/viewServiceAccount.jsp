@@ -12,10 +12,10 @@
     <script type="text/javascript">
     	$(function() {
     		<c:if test="${not empty result}">
-    		    alert("Serice account was created successfully!");
+    		    //alert("Serice account was created successfully!");
     		</c:if>
     		<c:if test="${empty result}">
-		    	alert("Serice account was created!");
+		    	//alert("Serice account was created!");
 			</c:if>
     	});
     </script>

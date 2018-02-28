@@ -2,92 +2,105 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<html>
-  <head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><spring:message code="application.title"/></title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/login.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui.css"/>
-    <script src="${pageContext.request.contextPath}/scripts/jquery.js"></script>
-    <script src="${pageContext.request.contextPath}/scripts/jquery-ui.js"></script>
-    <script type="text/javascript">
-        if (window.opener != null) {
-           	window.opener.location = "${pageContext.request.contextPath}/public/logout.jsp";
-           	window.close();
-		}
-        
-        if (parent.ifrmContent != null) {
-			window.parent.location = "${pageContext.request.contextPath}/public/logout.jsp";
-		}
-
-		function onload() {
-			document.getElementById("username").focus();
-		}
-		
-		$(function(){
-			$("#forget_block").dialog({
-    			autoOpen: false,
-    		    height: 250,
-    		    width: 330,
-    		    modal: true
-			});
-			
-			$("#forget").click(function(){
-				$("#forget_block").dialog("open");					   
-			});
-			
-			//$("#btn_cancel").click(function(){
-			//	alert("ok");
-			//	$("#forget_block").dialog("close");					   
-			//});
-		});
-    </script>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
   </head>
-  <body onload="javascript:onload();" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" rightmargin="0">
-    <table id="layoutTable">
-      <tr>
-		<td class="top">&nbsp;</td>
-      </tr>
-      <tr>
-        <td class="middle">
-		  <div id="container">
-		    <div id="logo">
-			  <img src="${pageContext.request.contextPath}/images/login/logo.jpg"/>
-		    </div>
-		    <div id="login">
-		      <form:form id="frmLogin" action="login.do" method="POST" commandName="user">
-			    <div class="info_div">
-			      <span></span>
-			    </div>
-			    <div class="username_div">
-			      <form:input path="username" maxlength="10" placeholder="Username" style="width:100px"/>
-			      <font color="red"><form:errors path="username"/></font>
-			    </div>
-			    <div class="password_div">
-			      <form:password path="password" maxlength="10" placeholder="Password" style="width:100px"/>
-			      <font color="red"><form:errors path="password"/></font>
-			    </div>
-                <div class="forget_div">
-                  <a href="#" id="forget"><spring:message code="login.resetpassword"/></a>
-                </div>
-			    <div class="submit_div">
-			      <input type="submit" value='<spring:message code="login.login"/>'/>
-			    </div>
-		      </form:form>
-		    </div>
-		    <div class="record">
-              <a href="#"><spring:message code="application.legalterms"/></a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&copy;<spring:message code="application.copyright"/> - XYH&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+  <body>
+    <div class="container">    
+      <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div class="panel panel-info" >
+          <div class="panel-heading">
+            <div class="panel-title">Welcome to XYH WeChat Platform</div>
+            <div style="float:right; position: relative; top:-26px">
+              <img src="${pageContext.request.contextPath}/images/wechat.png" style="width:30px;height:30px;">
             </div>
-	      </div>
-		</td>
-	  </tr>
-	  <tr>
-		<td class="bottom">&nbsp;</td>
-      </tr>
-    </table>
-    
-    <!--弹出层_系统设置-->
-    <div class="block_div" id="forget_block">
-	  <iframe id="ifrmResetPassword" style="width:300px;height:180px;background-color: #adb9cd;border:none;" src="${pageContext.request.contextPath}/public/resetpassword.do"></iframe>
+          </div>     
+
+          <div style="padding-top:30px" class="panel-body" >
+            <form:form id="frmLogin" action="login.do" method="POST" commandName="user" class="form-horizontal" role="form">
+              <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12">
+                <p>Username is mandatory!<p>
+                <p>Password is mandatory!<p>
+              </div>
+
+              <div style="margin-bottom: 25px" class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <form:input id="login-username" path="username" maxlength="10" placeholder="Username" class="form-control"/>                                        
+              </div>
+                                
+              <div style="margin-bottom: 25px" class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <form:password id="login-password" path="password" maxlength="10" placeholder="Password" class="form-control"/>
+              </div> 
+
+              <div style="margin-top:10px" class="form-group">
+                <!-- Button -->
+                <div class="col-sm-12 controls">
+                  <a id="btn-login" href="#" onClick="$('#frmLogin').submit()" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-12 control">
+                  <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                    Forget Password?
+                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">Click Here</a>
+                  </div>
+                </div>
+              </div>    
+            </form:form>
+          </div>                     
+        </div>  
+      </div>
+
+      <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <div class="panel-title">Welcome to XYH WeChat Platform</div>
+            <div style="float:right; position: relative; top:-26px">
+              <img src="${pageContext.request.contextPath}/images/wechat.png" style="width:30px;height:30px;">
+            </div>
+          </div>  
+          <div class="panel-body" >
+            <form:form id="frmResetPassword" action="login.do" method="POST" commandName="user" class="form-horizontal" role="form">
+              <div id="resetpassalert" style="display:none" class="alert alert-danger">
+                <p>Error:</p>
+                <span></span>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="col-md-2 control-label">Email</label>
+                <div class="col-md-9">
+                  <form:input id="txtUsername" path="username" maxlength="10" placeholder="Username" class="form-control"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <!-- Button -->                                        
+                <div class="col-md-offset-2 col-md-9">
+                  <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i><spring:message code="button.passwordtomailbox"/></button>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class="col-md-12 control">
+                  <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                    Back to login page?
+                    <a href="#" onClick="$('#signupbox').hide(); $('#loginbox').show()">Click Here</a>
+                  </div>
+                </div>
+              </div>
+            </form:form>
+          </div>
+        </div>
+      </div> 
     </div>
   </body>
 </html>

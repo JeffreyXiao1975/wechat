@@ -3,14 +3,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title><spring:message code="application.title"/></title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/main.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/_all-skins.min.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/adminlte.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui.min.css"/>
-    
-    <script src="${pageContext.request.contextPath}/scripts/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/scripts/jquery-ui.min.js"></script>
     <script type="text/javascript">
     	$(function() {
@@ -18,75 +25,142 @@
     	});
     </script>
   </head>
-  <body>
-	<!-- container -->
-	<div id="container">
-	  <!-- logo -->
-	  <div id="logo"><spring:message code="application.title"/></div>
-	  <!-- /logo -->
- 
-      <!--菜单栏-->
-	  <div class="menu_bar">    
-        <ul>
-          <li class="leftmenu">
-            <a href="#" class=""><spring:message code="application.currentuser"/>:&nbsp;<c:out value="${sessionScope.user.username}"/></a>            
-          </li> 
-          <!-- <li class="leftmenu">
-            <a href="#" class="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="application.position"/>:&nbsp;</a>            
-          </li> -->
-          <li class="menu">
-            <a class="help" href="${pageContext.request.contextPath}/public/logout.jsp"><spring:message code="application.logout"/></a>
-          </li>
-          <li class="menu">
-            <a class="help" id="img-new-service-account"><spring:message code="application.help"/></a>
-          </li>
-        </ul> 
-      </div>
-      <!--//菜单栏-->
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="#" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>XYH</b></span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>XYH</b> WeChat Platform</span>
+        </a>
+
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              <li class="dropdown messages-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="label label-success">4</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">You have 4 messages</li>
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                      <li><!-- start message -->
+                        <a href="#">
+                          <div class="pull-left">
+                            <img src="${pageContext.request.contextPath}/images/user2-160x160.jpg" class="img-circle" alt="User Image">
+                          </div>
+                          <h4>
+                            Support Team
+                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                          </h4>
+                          <p>Why not buy a new awesome theme?</p>
+                        </a>
+                      </li>
+                      <!-- end message -->
+                    </ul>
+                  </li>
+                  <li class="footer"><a href="#">See All Messages</a></li>
+                </ul>
+              </li>
+          
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <img src="${pageContext.request.contextPath}/images/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <span class="hidden-xs">CHXYH</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-right">
+                      <a href="${pageContext.request.contextPath}/public/logout.jsp" class="btn btn-default btn-flat">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- sidebar menu: : style can be found in sidebar.less -->
+          <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active treeview menu-open">
+              <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Platform Management</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class="active"><a href="${pageContext.request.contextPath}/platform/queryUser.do" target="ifrm_content"><i class="fa fa-circle-o"></i>User Management</a></li>
+                <li><a href="${pageContext.request.contextPath}/platform/authorizationSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i>Authorization Management</a></li>
+                <li><a href="${pageContext.request.contextPath}/platform/systemSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i>System Setting</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="${pageContext.request.contextPath}/enterprise/enterprisemain.do" target="ifrm_content">
+                <i class="fa fa-th"></i>
+                <span>Enterprise Account</span>
+                <span class="pull-right-container">
+                  <span class="label label-primary pull-right">4</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="${pageContext.request.contextPath}/service/servicemain.do" target="ifrm_content">
+                <i class="fa fa-th"></i> 
+                <span>Service Account</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green">5</small>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="${pageContext.request.contextPath}/subscription/subscriptionmain.do" target="ifrm_content">
+                <i class="fa fa-th"></i> 
+                <span>Subscription Account</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green">6</small>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
       
-      <!-- content -->
-	  <div id="content">
-		<!-- navigator -->
-		<div id="nav">
-		  <div class="top"><a href="#" id="set"></a></div>
-		  <div class="tags">
-		    <a href="${pageContext.request.contextPath}/platform/platformmain.do" target="content_inner">
-			  <img src="${pageContext.request.contextPath}/images/nav/tag_yhxf.jpg"/>
-			  <span><spring:message code="wechat.platform.management"/></span>
-			</a>
-			<div class="line"></div>
-			<a href="${pageContext.request.contextPath}/enterprise/enterprisemain.do" target="content_inner">
-			  <img src="${pageContext.request.contextPath}/images/nav/tag_ztll.jpg"/>
-			  <span><spring:message code="wechat.enterprise.accout"/></span>
-			</a>
-			<div class="line"></div>
-			<a href="${pageContext.request.contextPath}/service/servicemain.do" target="content_inner">
-			  <img src="${pageContext.request.contextPath}/images/nav/tag_jichushuju.jpg"/>
-			  <span><spring:message code="wechat.service.account"/></span>
-			</a>
-			<div class="line"></div>
-			  <a href="${pageContext.request.contextPath}/subscription/subscriptionmain.do" target="content_inner">
-				<img src="${pageContext.request.contextPath}/images/nav/tag_dsfgm.jpg"/>
-				<span><spring:message code="wechat.subscription.account"/></span>
-			  </a>					
-			</div>
-		  </div>
-		  <!-- /navigator -->
-						
-		  <!-- iframe_div -->
-		  <div id="iframe_div">								
-			<!-- iframe -->
-			<div id="iframe">
-			  <iframe name="content_inner" src="${pageContext.request.contextPath}/common/welcome.do" width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0"></iframe>
-			</div>
-			<!-- /iframe -->
-		  </div>
-		  <!-- /iframe_div -->
-		</div>
-		<!-- /content -->
-	</div>
-	<!-- /container -->
-	
-	<iframe id="ifrm-popup-content" style="width:300px;height:200px;border:none;"></iframe>
+      
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper" style="height:100px;">
+        <iframe name="ifrm_content" id="ifrm_content" style="border:0;width:100%;height:100%;"></iframe>
+      </div>
+      <!-- /.content-wrapper -->
+      
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; 2018-2019 <a href="www.xyh.com">XYH</a>.</strong> All rights reserved.
+      </footer>
+    </div>
   </body>
 </html> 

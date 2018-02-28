@@ -3,19 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wechataccount.css"/>
-    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/styles//jquery-confirm.min.css"/>  -->
+    <script src="${pageContext.request.contextPath}/scripts/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/scripts/jquery-ui.js"></script>
+    <!-- <script src="${pageContext.request.contextPath}/scripts/jquery-confirm.min.js"></script> -->
     <script type="text/javascript">
     	$(function() {
     		$("#ifrm-popup-content", parent.document).dialog({
@@ -100,9 +95,64 @@
     		$("#ifrm-popup-content", parent.document).dialog(dialogOpts);
     	}
     </script>
+    <style type="text/css">
+    	.newaccount {
+      		width: 150px;
+      		height: 150px;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		background-color: green;
+      		text-align:center;
+      		line-height:150px;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	
+      	.activeaccount {
+      		width: 150px;
+      		height: 150px;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		background-color: green;
+      		text-align:center; 
+      		line-height:150px;      		
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	
+      	.activeaccount a:link{text-decoration: none;}
+        .activeaccount a img{position:relative; width:12px; height:12px; padding:2px; border:1px solid #cfcfcf; top:-60px; left:30px;}
+        .activeaccount a:hover img{ border-color:#8ECFF9;}
+        .activeaccount span{left:-120px; top:0px;}
+      
+      	.disabledaccount {
+      		width: 150px;
+      		height: 150px;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		background-color: lightgray;
+      		text-align:center;
+      		line-height:150px;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      
+      	.deletedaccount {
+      		width: 150px;
+      		height: 150px;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		background-color: gray;
+      		text-align:center;
+      		line-height:150px;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	.ui-menu { width: 150px; }
+    </style>
   </head>
 
-  <body style="margin-left:20px;">
+  <body>
     <img id="imgLoading" src="${pageContext.request.contextPath}/images/loading_red.gif" style="position:absolute;left:40%;top:40%;width:100px;height:100px;display:none;"/>
     <div style="height:5px;">&nbsp;</div>
 	<div class="divtitle">&nbsp;<spring:message code="wechat.service.account"/></div>
@@ -124,19 +174,18 @@
 	        <c:if test="${serviceAccountVo.disabled == false}">
 	          <c:if test="${serviceAccountVo.deleted == false}">
 	            <div class="activeaccount">
-	              <ul>
-                    <li>
-                      <a href="#">
-                        <img src="${pageContext.request.contextPath}/images/nextPage.gif" class="delete"/>
-                      </a>
-                      <ul>
-                        <li><a href="#" onclick="javascript:viewAccount('${serviceAccountVo.id}');"><spring:message code="button.view"/></a></li>
-                        <li><a href="#" onclick="javascript:updateAccount('${serviceAccountVo.id}');"><spring:message code="button.update"/></a></li>
-                        <li><a href="#" onclick="javascript:disableAccount('${serviceAccountVo.id}');"><spring:message code="button.disable"/></a></li>
-                        <li><a href="#" onclick="javascript:deleteAccount('${serviceAccountVo.id}');"><spring:message code="button.delete"/></a></li>
-                      </ul>
-                    </li>
-                  </ul>
+	              <a href="#" onclick="javascript:viewAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/view.png" title="<spring:message code="button.view"/>"/>
+	               </a>
+	               <a href="#" onclick="javascript:updateAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/update.png" title="<spring:message code="button.update"/>"/>
+	               </a>
+	               <a href="#" onclick="javascript:disableAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/disable.png" title="<spring:message code="button.disable"/>"/>
+	               </a>
+	               <a href="#" onclick="javascript:deleteAccount('${serviceAccountVo.id}');">
+	                 <img src="${pageContext.request.contextPath}/images/delete.png" title="<spring:message code="button.delete"/>"/>
+	               </a>
 	              <span><c:out value="${serviceAccountVo.accountName}"/></span>
 	            </div>
 	          </c:if>

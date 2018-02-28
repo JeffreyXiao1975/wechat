@@ -1,0 +1,91 @@
+        .newaccount {
+			display:inline-block;
+			position:relative;
+      		width: 150px;
+      		height: 150px;
+      		background-color: white;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		text-align:center;
+      		line-height:150px;
+      		overflow:hidden;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	
+      	.activeaccount {
+      		display:inline-block;
+			position:relative;
+      		width: 150px;
+      		height: 150px;
+      		background-color: green;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		text-align:center;
+      		line-height:150px;
+      		overflow:hidden;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	
+      	.activeaccount ul { list-style:none;}
+        .activeaccount .delete {position:absolute;top:1px;right:1px;width:20px;height:20px;display:block;}        
+        .activeaccount ul li a{text-decoration:none; color:#000; display:block;padding:0px 10px;}        
+        .activeaccount ul li a:hover{color:#FFF; background:#333}        
+        .activeaccount ul li ul {position:absolute;display:none;}
+        .activeaccount ul li ul li{ float:none; line-height:20px; text-align:left;}  
+        .activeaccount ul li ul li a{width:100%;}  
+        .activeaccount ul li ul li a:hover{background-color:#06f;}
+        .activeaccount ul li:hover ul{display:block}
+      
+      	.disabledaccount {
+      		display:inline-block;
+			position:relative;
+      		width: 150px;
+      		height: 150px;
+      		background-color: lightgray;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		text-align:center;
+      		line-height:150px;
+      		overflow:hidden;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	
+      	.disabledaccount ul { list-style:none;}
+        .disabledaccount .delete {position:absolute;top:1px;right:1px;width:20px;height:20px;display:block;}        
+        .disabledaccount ul li a{text-decoration:none; color:#000; display:block;padding:0px 10px;}        
+        .disabledaccount ul li a:hover{color:#FFF; background:#333}        
+        .disabledaccount ul li ul {position:absolute;display:none;}
+        .disabledaccount ul li ul li{ float:none; line-height:20px; text-align:left;}  
+        .disabledaccount ul li ul li a{width:100%;}  
+        .disabledaccount ul li ul li a:hover{background-color:#06f;}
+        .disabledaccount ul li:hover ul{display:block}
+      
+      	.deletedaccount {
+      		display:inline-block;
+			position:relative;
+      		width: 150px;
+      		height: 150px;
+      		background-color: gray;
+      		float: left;
+      		margin-right: 20px;
+      		margin-bottom: 20px;
+      		text-align:center;
+      		line-height:150px;
+      		overflow:hidden;
+      		box-shadow: 5px 5px 2px #888888;
+      	}
+      	
+      	.deletedaccount ul { list-style:none;}
+        .deletedaccount .delete {position:absolute;top:1px;right:1px;width:20px;height:20px;display:block;}        
+        .deletedaccount ul li a{text-decoration:none; color:#000; display:block;padding:0px 10px;}        
+        .deletedaccount ul li a:hover{color:#FFF; background:#333}        
+        .deletedaccount ul li ul {position:absolute;display:none;}
+        .deletedaccount ul li ul li{ float:none; line-height:20px; text-align:left;}  
+        .deletedaccount ul li ul li a{width:100%;}  
+        .deletedaccount ul li ul li a:hover{background-color:#06f;}
+        .deletedaccount ul li:hover ul{display:block}
+        
+      	.ui-menu { width: 150px; }

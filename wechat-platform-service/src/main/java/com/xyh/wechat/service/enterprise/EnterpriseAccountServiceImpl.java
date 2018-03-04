@@ -105,6 +105,7 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public EnterpriseAccountVo disableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		List<WxEnterpriseSubaccount> wxEnterpriseSubaccounts = null;
@@ -120,6 +121,16 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 			}
 		}
 		wxEnterpriseAccount.setDisabled(true);
+		wxEnterpriseAccount = enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
+		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public EnterpriseAccountVo enableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
+		WxEnterpriseAccount wxEnterpriseAccount = null;
+		
+		wxEnterpriseAccount = enterpriseAccountDao.getEnterpriseAccountbyId(enterpriseAccountVo.getId());
+		wxEnterpriseAccount.setDisabled(false);
 		wxEnterpriseAccount = enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
 		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
 	}
@@ -197,11 +208,22 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 		
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
 	public EnterpriseSubaccountVo disableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
 		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;		
 		
 		wxEnterpriseSubaccount = enterpriseAccountDao.getEnterpriseSubaccountbyId(enterpriseSubaccountVo.getId());
 		wxEnterpriseSubaccount.setDisabled(true);
+		wxEnterpriseSubaccount = enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
+		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public EnterpriseSubaccountVo enableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
+		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;		
+		
+		wxEnterpriseSubaccount = enterpriseAccountDao.getEnterpriseSubaccountbyId(enterpriseSubaccountVo.getId());
+		wxEnterpriseSubaccount.setDisabled(false);
 		wxEnterpriseSubaccount = enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
 		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
 	}

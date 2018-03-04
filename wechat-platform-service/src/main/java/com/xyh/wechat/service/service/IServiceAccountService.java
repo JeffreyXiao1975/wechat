@@ -12,4 +12,5 @@ public interface IServiceAccountService {
 	public void updateServiceAccount(ServiceAccountVo serviceAccountVo);
 	public void deleteServiceAccount(ServiceAccountVo serviceAccountVo);
 	public void disableServiceAccount(ServiceAccountVo serviceAccountVo);
+	public void enableServiceAccount(ServiceAccountVo serviceAccountVo);
 }

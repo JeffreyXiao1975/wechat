@@ -12,4 +12,5 @@ public interface ISubscriptionAccountService {
 	public SubscriptionAccountVo updateSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo);
 	public SubscriptionAccountVo deleteSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo);
 	public SubscriptionAccountVo disableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo);
+	public SubscriptionAccountVo enableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo);
 }

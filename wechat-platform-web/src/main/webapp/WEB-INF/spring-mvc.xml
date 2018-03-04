@@ -16,7 +16,45 @@
                 http://www.springframework.org/schema/aop
                 http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	<context:component-scan base-package="com.xyh.wechat.web"/>
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven>
+	  <mvc:message-converters>
+        <bean id="stringHttpMessageConverter"
+              class="org.springframework.http.converter.StringHttpMessageConverter">
+            <property name="supportedMediaTypes">
+                <list>
+                    <!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+                    <value>text/html;charset=UTF-8</value>
+                    <value>application/json;charset=UTF-8</value>
+                </list>
+            </property>
+        </bean>
+        <!-- 如果不使用jackson可使用fastjson版本JSON转换器 -->
+        <bean id="mappingJacksonHttpMessageConverter"
+              class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+            <property name="objectMapper">
+                <!-- <bean class="com.threeStepTech.ObjectMapper.CustomObjectMapper"/> -->
+                <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                    <property name="dateFormat">
+                        <bean class="java.text.SimpleDateFormat">
+                            <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                        </bean>
+                    </property>
+                    <property name="serializationInclusion">
+                        <!-- 注入枚举类型,过滤不输出null -->
+                        <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+                    </property>
+                </bean>
+            </property>
+            <property name="supportedMediaTypes">
+                <list>
+                    <!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+                    <value>text/html;charset=UTF-8</value>
+                    <value>application/json;charset=UTF-8</value>
+                </list>
+            </property>
+        </bean>
+      </mvc:message-converters>
+	</mvc:annotation-driven>
 	
 	<mvc:interceptors>
     	<mvc:interceptor>

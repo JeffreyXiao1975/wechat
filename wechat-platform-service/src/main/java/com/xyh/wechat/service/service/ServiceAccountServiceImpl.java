@@ -93,4 +93,12 @@ public class ServiceAccountServiceImpl extends BaseService implements IServiceAc
 		serviceAccountDao.updateServiceAccount(wxServiceAccount);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void enableServiceAccount(ServiceAccountVo serviceAccountVo) {
+		WxServiceAccount wxServiceAccount = null;
+		
+		wxServiceAccount = serviceAccountDao.getServiceAccountbyId(serviceAccountVo.getId());
+		wxServiceAccount.setDisabled(false);
+		serviceAccountDao.updateServiceAccount(wxServiceAccount);
+	}
 }

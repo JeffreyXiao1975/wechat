@@ -96,4 +96,14 @@ public class SubscriptionAccountServiceImpl extends BaseService implements ISubs
 		wxSubscriptionAccount = subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
 		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
 	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public SubscriptionAccountVo enableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
+		WxSubscriptionAccount wxSubscriptionAccount = null;
+		
+		wxSubscriptionAccount = subscriptionAccountDao.getSubscriptionAccountbyId(subscriptionAccountVo.getId());
+		wxSubscriptionAccount.setDisabled(false);
+		wxSubscriptionAccount = subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
+		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
+	}
 }

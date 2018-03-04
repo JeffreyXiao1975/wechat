@@ -19,21 +19,20 @@ import com.xyh.wechat.vo.enterprise.EnterpriseAccountVo;
 import com.xyh.wechat.web.model.enterprise.QueryEnterpriseAccountCriteriaModel;
 
 @Controller
-@RequestMapping("/enterprise")
 public class EnterpriseController {
 	@Autowired
 	private IEnterpriseAccountService enterpriseAccountService;
 	
-	@RequestMapping("/enterprisemain")
-	public void initQueryForm(ModelMap model) {
+	@RequestMapping(value="/enterprise/enterprisemain", method=RequestMethod.GET)
+	public void initQueryEnterpriseAccountForm(ModelMap model) {
 		QueryEnterpriseAccountCriteriaModel queryModel = new QueryEnterpriseAccountCriteriaModel();
 		queryModel.setDisabled(false);
 		queryModel.setDeleted(false);
 		this.QueryEnterpriseAccount(queryModel, model, null);
 	}
 	
-	@RequestMapping(value="/enterprisemain", method=RequestMethod.POST)
-	public ModelAndView queryUser(HttpSession httpSession, @ModelAttribute("queryEnterpriseAccountCriteriaModel") @Valid QueryEnterpriseAccountCriteriaModel queryModel, BindingResult result, ModelMap model) {
+	@RequestMapping(value="/enterprise/enterprisemain", method=RequestMethod.POST)
+	public ModelAndView postQueryServiceAccountForm(HttpSession httpSession, @ModelAttribute("queryEnterpriseAccountCriteriaModel") QueryEnterpriseAccountCriteriaModel queryModel, BindingResult result, ModelMap model) {
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("/enterprise/enterprisemain");
 		this.QueryEnterpriseAccount(queryModel, model, mv);

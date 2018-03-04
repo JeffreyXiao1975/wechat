@@ -20,9 +20,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/jquery-ui.min.css"/>
     <script src="${pageContext.request.contextPath}/scripts/jquery-ui.min.js"></script>
     <script type="text/javascript">
-    	$(function() {
-    		
-    	});
     </script>
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
@@ -31,9 +28,9 @@
         <!-- Logo -->
         <a href="#" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>XYH</b></span>
+          <span class="logo-mini"><b><spring:message code="application.company"/></b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>XYH</b> WeChat Platform</span>
+          <span class="logo-lg"><b><spring:message code="application.company"/></b><spring:message code="application.wechat"/></span>
         </a>
 
         <!-- Header Navbar: style can be found in header.less -->
@@ -80,13 +77,13 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="${pageContext.request.contextPath}/images/user2-160x160.jpg" class="user-image" alt="User Image">
-                  <span class="hidden-xs">CHXYH</span>
+                  <span class="hidden-xs"><c:out value="${sessionScope.user.username}"/></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-right">
-                      <a href="${pageContext.request.contextPath}/public/logout.jsp" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="${pageContext.request.contextPath}/public/logout.jsp" class="btn btn-default btn-flat"><spring:message code="application.logout"/></a>
                     </div>
                   </li>
                 </ul>
@@ -105,21 +102,21 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview menu-open">
               <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Platform Management</span>
+                <i class="fa fa-dashboard"></i> <span><spring:message code="wechat.platform.management"/></span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="${pageContext.request.contextPath}/platform/queryUser.do" target="ifrm_content"><i class="fa fa-circle-o"></i>User Management</a></li>
-                <li><a href="${pageContext.request.contextPath}/platform/authorizationSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i>Authorization Management</a></li>
-                <li><a href="${pageContext.request.contextPath}/platform/systemSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i>System Setting</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/platform/queryUser.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.usersetting"/></a></li>
+                <li><a href="${pageContext.request.contextPath}/platform/authorizationSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.permissionsetting"/></a></li>
+                <li><a href="${pageContext.request.contextPath}/platform/systemSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.systemsetting"/></a></li>
               </ul>
             </li>
             <li>
               <a href="${pageContext.request.contextPath}/enterprise/enterprisemain.do" target="ifrm_content">
                 <i class="fa fa-th"></i>
-                <span>Enterprise Account</span>
+                <span><spring:message code="wechat.enterprise.account"/></span>
                 <span class="pull-right-container">
                   <span class="label label-primary pull-right">4</span>
                 </span>
@@ -128,7 +125,7 @@
             <li>
               <a href="${pageContext.request.contextPath}/service/servicemain.do" target="ifrm_content">
                 <i class="fa fa-th"></i> 
-                <span>Service Account</span>
+                <span><spring:message code="wechat.service.account"/></span>
                 <span class="pull-right-container">
                   <small class="label pull-right bg-green">5</small>
                 </span>
@@ -137,7 +134,7 @@
             <li>
               <a href="${pageContext.request.contextPath}/subscription/subscriptionmain.do" target="ifrm_content">
                 <i class="fa fa-th"></i> 
-                <span>Subscription Account</span>
+                <span><spring:message code="wechat.subscription.account"/></span>
                 <span class="pull-right-container">
                   <small class="label pull-right bg-green">6</small>
                 </span>

@@ -17,7 +17,7 @@
       <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
         <div class="panel panel-info" >
           <div class="panel-heading">
-            <div class="panel-title">Welcome to XYH WeChat Platform</div>
+            <div class="panel-title"><spring:message code="application.welcome"/></div>
             <div style="float:right; position: relative; top:-26px">
               <img src="${pageContext.request.contextPath}/images/wechat.png" style="width:30px;height:30px;">
             </div>
@@ -26,8 +26,8 @@
           <div style="padding-top:30px" class="panel-body" >
             <form:form id="frmLogin" action="login.do" method="POST" commandName="user" class="form-horizontal" role="form">
               <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12">
-                <p>Username is mandatory!<p>
-                <p>Password is mandatory!<p>
+                <p><spring:message code="login.username.required"/><p>
+                <p><spring:message code="login.password.required"/><p>
               </div>
 
               <div style="margin-bottom: 25px" class="input-group">
@@ -43,15 +43,15 @@
               <div style="margin-top:10px" class="form-group">
                 <!-- Button -->
                 <div class="col-sm-12 controls">
-                  <a id="btn-login" href="#" onClick="$('#frmLogin').submit()" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                  <a id="btn-login" href="#" onClick="$('#frmLogin').submit()" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.login"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-12 control">
                   <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                    Forget Password?
-                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">Click Here</a>
+                    <spring:message code="login.forgetpassword"/>
+                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()"><spring:message code="login.click.here"/></a>
                   </div>
                 </div>
               </div>    
@@ -63,7 +63,7 @@
       <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <div class="panel-title">Welcome to XYH WeChat Platform</div>
+            <div class="panel-title"><spring:message code="application.welcome"/></div>
             <div style="float:right; position: relative; top:-26px">
               <img src="${pageContext.request.contextPath}/images/wechat.png" style="width:30px;height:30px;">
             </div>
@@ -76,7 +76,7 @@
               </div>
 
               <div class="form-group">
-                <label for="email" class="col-md-2 control-label">Email</label>
+                <label for="email" class="col-md-2 control-label"><spring:message code="login.email"/></label>
                 <div class="col-md-9">
                   <form:input id="txtUsername" path="username" maxlength="10" placeholder="Username" class="form-control"/>
                 </div>
@@ -92,8 +92,8 @@
               <div class="form-group">
                 <div class="col-md-12 control">
                   <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                    Back to login page?
-                    <a href="#" onClick="$('#signupbox').hide(); $('#loginbox').show()">Click Here</a>
+                    <spring:message code="login.backto.login"/>
+                    <a href="#" onClick="$('#signupbox').hide(); $('#loginbox').show()"><spring:message code="login.click.here"/></a>
                   </div>
                 </div>
               </div>

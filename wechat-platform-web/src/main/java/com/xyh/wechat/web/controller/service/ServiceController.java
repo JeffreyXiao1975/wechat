@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContext;
 
 import com.xyh.wechat.convertor.service.ServiceAccountConvertor;
 import com.xyh.wechat.service.platform.IPlatformLegalEntity;
@@ -93,6 +96,108 @@ public class ServiceController {
 	@RequestMapping(value="/service/updateServiceAccount", method=RequestMethod.POST)
 	public void postUpdateServiceAccountForm(@ModelAttribute("serviceAccountModel") @Valid ServiceAccountModel serviceAccountModel, BindingResult result, ModelMap model) {
 		model.addAttribute("serviceAccountModel", new ServiceAccountModel());
+	}
+	
+	@RequestMapping(value="/service/disableServiceAccount", method=RequestMethod.GET)
+	@ResponseBody  
+	public Map<String, Object> disableServiceAccount(HttpServletRequest request,HttpServletResponse response) {
+		String accountId = "";
+		ServiceAccountVo serviceAccountVo = null; 
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		accountId = request.getParameter("accountId");
+		serviceAccountVo = serviceAccountService.getServiceAccountbyId(Long.parseLong(accountId));
+		if (serviceAccountVo != null) {
+			if (serviceAccountVo.isDeleted()) {
+				//the service account has been marked as deleted by others
+				modelMap.put("success", "false");
+				modelMap.put("message", "The service account has been deleted by others!");
+			} else {
+				if (serviceAccountVo.isDisabled()) {
+					//the service account has been marked as disabled by others
+					modelMap.put("success", "false");
+					modelMap.put("message", "The service account has been disabled by others!");
+				} else {
+					serviceAccountService.disableServiceAccount(serviceAccountVo);
+					modelMap.put("success", "false");
+					modelMap.put("message", "The service account was disabled successfully!");
+				}
+			}
+			
+		} else {
+			//the service account has been physically deleted by others
+			modelMap.put("success", "false");
+			modelMap.put("message", "The service account has been physically deleted by others!");
+		}
+		
+		return modelMap;
+	}
+	
+	@RequestMapping(value="/service/enableServiceAccount", method=RequestMethod.GET)
+	@ResponseBody  
+	public Map<String, Object> enableServiceAccount(HttpServletRequest request,HttpServletResponse response) {
+		String accountId = "";
+		ServiceAccountVo serviceAccountVo = null; 
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		
+		accountId = request.getParameter("accountId");
+		serviceAccountVo = serviceAccountService.getServiceAccountbyId(Long.parseLong(accountId));
+		if (serviceAccountVo != null) {
+			if (serviceAccountVo.isDeleted()) {
+				//the service account has been marked as deleted by others
+				modelMap.put("success", "false");
+				modelMap.put("message", "The service account has been deleted by others!");
+			} else {
+				if (serviceAccountVo.isDisabled()) {
+					serviceAccountService.enableServiceAccount(serviceAccountVo);
+					modelMap.put("success", "false");
+					modelMap.put("message", "The service account was enabled successfully!");
+				} else {
+					//the service account has been enabled by others
+					modelMap.put("success", "false");
+					modelMap.put("message", "The service account has been enabled by others!");
+				}
+			}
+			
+		} else {
+			//the service account has been physically deleted by others
+			modelMap.put("success", "false");
+			modelMap.put("message", "The service account has been physically deleted by others!");
+		}
+		
+		return modelMap;
+	}
+	
+	@RequestMapping(value="/service/deleteServiceAccount", method=RequestMethod.GET)
+	@ResponseBody  
+	public Map<String, Object> deleteServiceAccount(HttpServletRequest request,HttpServletResponse response) {
+		String accountId = "";
+		ServiceAccountVo serviceAccountVo = null; 
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		RequestContext requestContext = new RequestContext(request);  
+		//requestContext.getMessage("");  
+
+		
+		accountId = request.getParameter("accountId");
+		serviceAccountVo = serviceAccountService.getServiceAccountbyId(Long.parseLong(accountId));
+		if (serviceAccountVo != null) {
+			if (serviceAccountVo.isDeleted()) {
+				//the service account has been marked as deleted by others
+				modelMap.put("success", "false");
+				modelMap.put("message", requestContext.getMessage("")); //"The service account has been deleted by others!");
+			} else {
+				serviceAccountService.deleteServiceAccount(serviceAccountVo);
+				modelMap.put("success", "false");
+				modelMap.put("message", "The service account was disabled successfully!");
+			}
+			
+		} else {
+			//the service account has been physically deleted by others
+			modelMap.put("success", "false");
+			modelMap.put("message", "The service account has been physically deleted by others!");
+		}
+		
+		return modelMap;
 	}
 	
 	private void queryServiceAccount(QueryServiceAccountCriteriaModel queryModel, ModelMap model, ModelAndView mv) {

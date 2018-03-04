@@ -13,6 +13,7 @@ public interface IEnterpriseAccountService {
 	public EnterpriseAccountVo updateEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
 	public EnterpriseAccountVo deleteEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
 	public EnterpriseAccountVo disableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
+	public EnterpriseAccountVo enableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
 	
 	public List<EnterpriseSubaccountVo> getAllEnterpriseSubaccounts(long parentAccountId, boolean includeDisabled, boolean includeDeleted);
 	public EnterpriseSubaccountVo getEnterpriseSubaccountbyId(long subaccountId);
@@ -20,4 +21,5 @@ public interface IEnterpriseAccountService {
 	public EnterpriseSubaccountVo updateEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
 	public EnterpriseSubaccountVo deleteEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
 	public EnterpriseSubaccountVo disableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
+	public EnterpriseSubaccountVo enableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
 }

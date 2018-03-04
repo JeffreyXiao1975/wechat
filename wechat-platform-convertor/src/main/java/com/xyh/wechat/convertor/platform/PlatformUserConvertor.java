@@ -15,6 +15,8 @@ public class PlatformUserConvertor extends BaseConvertor {
 			userVo.setId(wxPlatformUser.getUserId());
 			userVo.setUsername(wxPlatformUser.getUsername());
 			userVo.setPassword(wxPlatformUser.getPassword());
+			userVo.setDisabled(wxPlatformUser.isDisabled());
+			userVo.setDeleted(wxPlatformUser.isDeleted());
 			userVo.setCreatedTime(wxPlatformUser.getCreatedTime().toString());
 			userVo.setUpdatedTime(wxPlatformUser.getUpdatedTime().toString());
 		}
@@ -41,6 +43,8 @@ public class PlatformUserConvertor extends BaseConvertor {
 			wxPlatformUser.setUserId(userVo.getId());
 			wxPlatformUser.setUsername(userVo.getUsername());
 			wxPlatformUser.setPassword(userVo.getPassword());
+			wxPlatformUser.setDisabled(userVo.isDisabled());
+			wxPlatformUser.setDeleted(userVo.isDeleted());
 		}
 		
 		return wxPlatformUser;

@@ -28,6 +28,12 @@ public class WxPlatformUser extends WxBaseEntity {
 	@Column(name="user_password")
 	private String password;
 	
+	@Column(name="is_disabled")
+	private boolean disabled;
+	
+	@Column(name="is_deleted")
+	private boolean deleted;
+	
 	@Column(name="created_time", insertable=false, updatable=false)
 	private Timestamp createdTime;
 	
@@ -106,5 +112,33 @@ public class WxPlatformUser extends WxBaseEntity {
 	public void setRoles(Set<WxPlatformRole> roles) {
         this.roles = roles;
     }
+
+	/**
+	 * @return the disabled
+	 */
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	/**
+	 * @param disabled the disabled to set
+	 */
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
+	}
+
+	/**
+	 * @return the deleted
+	 */
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	/**
+	 * @param deleted the deleted to set
+	 */
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
 
 }

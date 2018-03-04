@@ -20,6 +20,7 @@ import com.xyh.wechat.util.WeChatPlatformMath;
 import com.xyh.wechat.vo.platform.PlatformUserVo;
 import com.xyh.wechat.web.controller.BaseController;
 import com.xyh.wechat.web.model.platform.QueryPlatformUserCriteriaModel;
+import com.xyh.wechat.web.model.platform.UserModel;
 
 @Controller
 public class UserController extends BaseController {
@@ -27,7 +28,7 @@ public class UserController extends BaseController {
 	IPlatformUserService platformUserService;
 		
 	@RequestMapping(value="/platform/queryUser", method=RequestMethod.GET)
-	public void initQueryForm(ModelMap model) {
+	public void initQueryUserForm(ModelMap model) {
 		QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel = new QueryPlatformUserCriteriaModel();
 		queryPlatformUserCriteriaModel.setUsername("");
 		queryPlatformUserCriteriaModel.setCurrentPageNumber(1);
@@ -38,11 +39,31 @@ public class UserController extends BaseController {
 	}
 	
 	@RequestMapping(value="/platform/queryUser", method=RequestMethod.POST)
-	public ModelAndView queryUser(HttpSession httpSession, @ModelAttribute("queryPlatformUserCriteriaModel") @Valid QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel, BindingResult result, ModelMap model) {
+	public ModelAndView postQueryUserForm(HttpSession httpSession, @ModelAttribute("queryPlatformUserCriteriaModel") @Valid QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel, BindingResult result, ModelMap model) {
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("/platform/queryUser");
 		this.QueryPlatformUser(queryPlatformUserCriteriaModel, model, mv);
 		return mv;
+	}
+	
+	@RequestMapping(value="/platform/createUser", method=RequestMethod.GET)
+	public void initCreateUserForm(ModelMap model) {
+		
+	}
+	
+	@RequestMapping(value="/platform/createUser", method=RequestMethod.POST)
+	public String postCreateUserForm(HttpSession httpSession, @ModelAttribute("userModel") @Valid UserModel userModel, BindingResult result, ModelMap model) {
+		return "";
+	}
+	
+	@RequestMapping(value="/platform/updateUser", method=RequestMethod.GET)
+	public void initUpdateUserForm(ModelMap model) {
+		
+	}
+	
+	@RequestMapping(value="/platform/updateUser", method=RequestMethod.POST)
+	public void postUpdateUserForm(HttpSession httpSession, @ModelAttribute("userModel") @Valid UserModel userModel, BindingResult result, ModelMap model) {
+		
 	}
 	
 	private void QueryPlatformUser(QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel, ModelMap model, ModelAndView mv) {

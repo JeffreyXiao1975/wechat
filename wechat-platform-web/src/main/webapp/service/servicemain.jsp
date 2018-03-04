@@ -75,7 +75,7 @@
 	    	);
 		}
 	    
-	    function deleteccount(iaccountid) {
+	    function deleteaccount(iaccountid) {
 	    	layer.confirm('<spring:message code="wechat.service.account.delete.confirm"/>', 
 	    		{
 	    			btn: ['<spring:message code="button.confirm"/>','<spring:message code="button.cancel"/>'] //按钮

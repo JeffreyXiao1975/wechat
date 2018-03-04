@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.xyh.wechat.web.model.pub.UserModel;
+import com.xyh.wechat.web.model.pub.LoginModel;
 
 public class PlatformInterceptor extends HandlerInterceptorAdapter {
 	@Autowired
@@ -27,7 +27,7 @@ public class PlatformInterceptor extends HandlerInterceptorAdapter {
 		request.setCharacterEncoding("UTF-8");
 		String url = request.getServletPath();
 		if(!url.equals("") && request.getSession().getAttribute("user") != null) {
-			UserModel user = (UserModel) request.getSession().getAttribute("user");
+			LoginModel user = (LoginModel) request.getSession().getAttribute("user");
 			user.getUsername();
 		}
 		return true;

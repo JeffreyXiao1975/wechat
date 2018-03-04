@@ -5,12 +5,12 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.xyh.wechat.web.model.pub.UserModel;
+import com.xyh.wechat.web.model.pub.LoginModel;
 
-@Component("userValidator")
-public class UserValidator implements Validator {
+@Component("loginValidator")
+public class LoginValidator implements Validator {
 	public boolean supports(Class<?> arg0) {
-		return UserModel.class.isAssignableFrom(arg0);
+		return LoginModel.class.isAssignableFrom(arg0);
 	}
 
 	public void validate(Object command, Errors errors) {

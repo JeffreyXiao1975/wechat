@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xyh.wechat.service.platform.IPlatformUserService;
 import com.xyh.wechat.web.controller.BaseController;
-import com.xyh.wechat.web.model.pub.UserModel;
-import com.xyh.wechat.web.validator.pub.UserValidator;
+import com.xyh.wechat.web.model.pub.LoginModel;
+import com.xyh.wechat.web.validator.pub.LoginValidator;
 
 @Controller
 @RequestMapping("/public/login")
@@ -26,19 +26,19 @@ public class LoginController extends BaseController {
 	
 	@InitBinder  
 	public void initBinder(DataBinder binder) {  
-		binder.setValidator(new UserValidator());  
+		binder.setValidator(new LoginValidator());  
 	}
 
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String initForm(ModelMap model){
-		UserModel user = new UserModel();
+		LoginModel user = new LoginModel();
 		model.addAttribute("user", user);		
 		return "/public/login";
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String processSubmit(HttpSession httpSession, @ModelAttribute("user") @Valid UserModel user, BindingResult result, ModelMap model) {		
+	public String processSubmit(HttpSession httpSession, @ModelAttribute("user") @Valid LoginModel user, BindingResult result, ModelMap model) {		
 		
 		if (!result.hasFieldErrors()) {
 			if (platformUserService != null) {

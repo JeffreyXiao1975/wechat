@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xyh.wechat.web.controller.BaseController;
-import com.xyh.wechat.web.model.pub.UserModel;
+import com.xyh.wechat.web.model.pub.LoginModel;
 
 @Controller
 public class PublicController extends BaseController {
@@ -22,7 +22,7 @@ public class PublicController extends BaseController {
 	
 	@RequestMapping(value="/public/resetpassword", method=RequestMethod.GET)
 	public void resetpassword(ModelMap model) {
-		UserModel userModel = new UserModel();
+		LoginModel userModel = new LoginModel();
 		userModel.setUsername("");
 		userModel.setPassword("");
 		model.addAttribute("userModel", userModel);

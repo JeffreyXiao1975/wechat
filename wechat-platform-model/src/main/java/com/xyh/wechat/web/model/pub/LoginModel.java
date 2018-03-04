@@ -2,7 +2,7 @@ package com.xyh.wechat.web.model.pub;
 
 import com.xyh.wechat.web.model.BaseModel;
 
-public class UserModel extends BaseModel {
+public class LoginModel extends BaseModel {
 	private String username = null;	
 	private String password = null;
 	/**

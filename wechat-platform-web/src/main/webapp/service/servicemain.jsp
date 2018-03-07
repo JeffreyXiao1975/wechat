@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/wechataccount.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fontawesome-all.css"/>
     <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/layer.js"></script>
@@ -107,26 +107,37 @@
   </head>
 
   <body style="overflow:hidden">
-    <div style="height:5px;margin-left:20px;">&nbsp;</div>
-	<div style="margin-left:20px;">&nbsp;<spring:message code="wechat.service.account"/></div>
-	<div style="height:5px;margin-left:20px;">&nbsp;</div>
-	<form:form id="frmServiceMain" action="servicemain.do" method="POST" cssStyle="width:100%" commandName="queryServiceAccountCriteriaModel">
-	  <div style="top:20px; margin-left:20px; border:1px solid #333">
-	    <form:checkbox path="disabled" value="1"/><spring:message code="checkbox.disabled"/>
-	    <form:checkbox path="deleted" value="1"/><spring:message code="checkbox.deleted"/>
-	    <input type="submit" id="btnSearch" value="<spring:message code="button.search"/>"/>
-	  </div>
-	  <div style="height:10px;margin-left:20px;">&nbsp;</div>
-	  
-	  <div class="container-fluid">
+    <div style="height:30px;width:100%;display:inline-block;background:brown;text-align:left;line-height:30px;overflow:hidden;">
+      <strong style="color:white;">&nbsp;&nbsp;<spring:message code="wechat.service.account"/></strong>
+    </div>
+    <div class="container-fluid">
+      <form:form id="frmServiceAccountMain" action="servicemain.do" method="POST" cssStyle="width:100%" commandName="serviceAccountCriteriaModel">
+        <div class="row">
+	      <div class="col-sm-12">
+	        <div class="form-group">
+	          <form:checkbox path="disabled" value="1"/>&nbsp;<spring:message code="checkbox.disabled"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	          <form:checkbox path="deleted" value="1"/>&nbsp;<spring:message code="checkbox.deleted"/>&nbsp;&nbsp;&nbsp;&nbsp;
+	          <a href="#" onclick="$('#frmServiceAccountMain').submit();" style="text-decoration:none;" title="<spring:message code="button.search"/>">
+              <i class="fas fa-search-plus"></i>
+            </a>&nbsp;
+	        </div>
+	      </div>
+	    </div>
+	    
 	    <div class="row">
 	      <div class="col-sm-2">
 	        <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-	          <img id="img-new-service-account" onclick="openlayer('${pageContext.request.contextPath}/service/createServiceAccount.do', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" title="<spring:message code="wechat.service.account.new"/>" src="${pageContext.request.contextPath}/images/new.png" style="width:100%; height:100%; cursor:pointer;"/>
-	        </div>
+              <div style="position:absolute; width:150px; height:100px; top:0; left:0; z-index:1;background:white;">
+                <div style="display:inline-block;position:relative;width:150px;height:100px;background:lightgray;text-align:center;line-height:100px;overflow:hidden;">
+                  <a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/createServiceAccount.do', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="wechat.service.account.new"/>">
+                    <i class="fas fa-plus-square"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-	      <c:if test="${not empty queryServiceAccountCriteriaModel.serviceAccountList}">
-	        <c:forEach items="${queryServiceAccountCriteriaModel.serviceAccountList}" var="serviceAccountVo">
+	      <c:if test="${not empty serviceAccountCriteriaModel.serviceAccountList}">
+	        <c:forEach items="${serviceAccountCriteriaModel.serviceAccountList}" var="serviceAccountVo">
 	          <c:if test="${serviceAccountVo.disabled == false}">
 	            <c:if test="${serviceAccountVo.deleted == false}">
 	              <div class="col-sm-2">
@@ -136,23 +147,19 @@
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>
-                      <div style="position:absolute; width:22px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">
-                        <div class="accountmenu">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <img src="${pageContext.request.contextPath}/images/wechat.png" class="img"/>
-                              </a>
-              
-                              <ul>
-                                <li><a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');">&nbsp;<spring:message code="button.view"/></a></li>
-                                <li><a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/updateServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');">&nbsp;<spring:message code="button.update"/></a></li>
-                                <li><a href="#" onclick="disableaccount('${serviceAccountVo.id}');">&nbsp;<spring:message code="button.disable"/></a></li>
-                                <li><a href="#" onclick="deleteaccount(${serviceAccountVo.id});">&nbsp;<spring:message code="button.delete"/></a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </div>
+                      <div style="position:absolute; width:150px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">
+                        &nbsp;<a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="button.view"/>">
+                                <i class="fas fa-eye"></i>
+                              </a>&nbsp;
+                        <a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/updateServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="button.update"/>">
+                          <i class="fas fa-edit"></i>
+                        </a>&nbsp;
+                        <a href="#" onclick="disableaccount('${serviceAccountVo.id}');" style="text-decoration:none;" title="<spring:message code="button.disable"/>">
+                          <i class="fas fa-thumbs-down"></i>
+                        </a>&nbsp;
+                        <a href="#" onclick="deleteaccount(${serviceAccountVo.id});" style="text-decoration:none;" title="<spring:message code="button.delete"/>">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -164,6 +171,11 @@
                         <div style="display:inline-block;position:relative;width:150px;height:100px;background:gray;text-align:center;line-height:100px;overflow:hidden;">
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
+                      </div>
+                      <div style="position:absolute; width:150px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">
+                        &nbsp;<a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="button.view"/>">
+                                <i class="fas fa-eye"></i>
+                              </a>
                       </div>
                     </div>
                   </div>
@@ -178,22 +190,16 @@
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>
-                      <div style="position:absolute; width:22px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">
-                        <div class="accountmenu">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <img src="${pageContext.request.contextPath}/images/wechat.png" class="img"/>
-                              </a>
-              
-                              <ul>
-                                <li><a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');">&nbsp;<spring:message code="button.view"/></a></li>
-                                <li><a href="#" onclick="enableaccount('${serviceAccountVo.id}');">&nbsp;<spring:message code="button.enable"/></a></li>
-                                <li><a href="#" onclick="deleteaccount(${serviceAccountVo.id});">&nbsp;<spring:message code="button.delete"/></a></li>
-                              </ul>
-                            </li>
-                          </ul>
-                        </div>
+                      <div style="position:absolute; width:150px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">
+                        &nbsp;<a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="button.view"/>">
+                                <i class="fas fa-eye"></i>
+                              </a>&nbsp;
+                        <a href="#" onclick="enableaccount('${serviceAccountVo.id}');" style="text-decoration:none;" title="<spring:message code="button.enable"/>">
+                          <i class="fas fa-thumbs-up"></i>
+                        </a>&nbsp;
+                        <a href="#" onclick="deleteaccount(${serviceAccountVo.id});" style="text-decoration:none;" title="<spring:message code="button.delete"/>">
+                          <i class="fas fa-trash-alt"></i>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -206,6 +212,11 @@
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>
+                      <div style="position:absolute; width:150px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">
+                        &nbsp;<a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/viewServiceAccount.do?id='+'${serviceAccountVo.id}', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="button.view"/>">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                      </div>
                     </div>
                   </div>
 	            </c:if>
@@ -213,7 +224,7 @@
 	        </c:forEach>
 	      </c:if>
 	    </div>
-	  </div>
-	</form:form>
+	  </form:form>
+	</div>
   </body>
 </html>

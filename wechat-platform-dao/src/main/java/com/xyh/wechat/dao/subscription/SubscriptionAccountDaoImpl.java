@@ -53,17 +53,20 @@ public class SubscriptionAccountDaoImpl extends BaseDao implements ISubscription
 		return wxSubscriptionAccount;
 	}
 
-	public WxSubscriptionAccount createSubscriptionAccount(WxSubscriptionAccount wxSubscriptionAccount) {
+	public void createSubscriptionAccount(WxSubscriptionAccount wxSubscriptionAccount) {
 		try {
 			this.entityManager.persist(wxSubscriptionAccount);
 		} catch (Exception ex) {
 			logger.error(ex);
 		}
-		return wxSubscriptionAccount;
 	}
 
-	public WxSubscriptionAccount updateSubscriptionAccount(WxSubscriptionAccount wxSubscriptionAccount) {
-		return this.entityManager.merge(wxSubscriptionAccount);
+	public void updateSubscriptionAccount(WxSubscriptionAccount wxSubscriptionAccount) {
+		try {
+			this.entityManager.merge(wxSubscriptionAccount);
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
 	}
 
 	public WxSubscriptionAccount getSubscriptionAccountbyName(String accountName) {

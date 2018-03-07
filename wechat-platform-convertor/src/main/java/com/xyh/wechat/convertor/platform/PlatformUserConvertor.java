@@ -1,10 +1,10 @@
 package com.xyh.wechat.convertor.platform;
 
 import com.xyh.wechat.convertor.BaseConvertor;
-import com.xyh.wechat.web.model.platform.QueryPlatformUserCriteriaModel;
+import com.xyh.wechat.web.model.platform.PlatformUserCriteriaModel;
 import com.xyh.wechat.jpa.entities.WxPlatformUser;
 import com.xyh.wechat.vo.platform.PlatformUserVo;
-import com.xyh.wechat.vo.platform.QueryPlatformUserCriteriaVo;
+import com.xyh.wechat.vo.platform.PlatformUserCriteriaVo;
 
 public class PlatformUserConvertor extends BaseConvertor {
 	public static PlatformUserVo convertToVo(WxPlatformUser wxPlatformUser) {
@@ -23,28 +23,30 @@ public class PlatformUserConvertor extends BaseConvertor {
 		return userVo;
 	}
 	
-	public static QueryPlatformUserCriteriaVo convertToVo(QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel) {
-		QueryPlatformUserCriteriaVo queryPlatformUserCriteriaVo = null;
+	public static PlatformUserCriteriaVo convertToVo(PlatformUserCriteriaModel platformUserCriteriaModel) {
+		PlatformUserCriteriaVo platformUserCriteriaVo = null;
 		
-		if (queryPlatformUserCriteriaModel != null) {
-			queryPlatformUserCriteriaVo = new QueryPlatformUserCriteriaVo();
-			queryPlatformUserCriteriaVo.setUsername(queryPlatformUserCriteriaModel.getUsername());
-			queryPlatformUserCriteriaVo.setPageSize(queryPlatformUserCriteriaModel.getPageSize());
-			queryPlatformUserCriteriaVo.setPageNumber(queryPlatformUserCriteriaModel.getCurrentPageNumber());
+		if (platformUserCriteriaModel != null) {
+			platformUserCriteriaVo = new PlatformUserCriteriaVo();
+			platformUserCriteriaVo.setUsername(platformUserCriteriaModel.getUsername());
+			platformUserCriteriaVo.setDeletedIncluded(platformUserCriteriaModel.isDeletedIncluded());
+			platformUserCriteriaVo.setDisabledIncluded(platformUserCriteriaModel.isDisabledIncluded());
+			platformUserCriteriaVo.setPageSize(platformUserCriteriaModel.getPageSize());
+			platformUserCriteriaVo.setPageNumber(platformUserCriteriaModel.getCurrentPageNumber());
 		}
-		return queryPlatformUserCriteriaVo;
+		return platformUserCriteriaVo;
 	}
 	
-	public static WxPlatformUser convertToEntity(PlatformUserVo userVo) {
+	public static WxPlatformUser convertToEntity(PlatformUserVo platformUserVo) {
 		WxPlatformUser wxPlatformUser = null;
 		
-		if (userVo != null) {
+		if (platformUserVo != null) {
 			wxPlatformUser = new WxPlatformUser();
-			wxPlatformUser.setUserId(userVo.getId());
-			wxPlatformUser.setUsername(userVo.getUsername());
-			wxPlatformUser.setPassword(userVo.getPassword());
-			wxPlatformUser.setDisabled(userVo.isDisabled());
-			wxPlatformUser.setDeleted(userVo.isDeleted());
+			wxPlatformUser.setUserId(platformUserVo.getId());
+			wxPlatformUser.setUsername(platformUserVo.getUsername());
+			wxPlatformUser.setPassword(platformUserVo.getPassword());
+			wxPlatformUser.setDisabled(platformUserVo.isDisabled());
+			wxPlatformUser.setDeleted(platformUserVo.isDeleted());
 		}
 		
 		return wxPlatformUser;

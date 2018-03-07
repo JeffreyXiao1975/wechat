@@ -9,17 +9,17 @@ public interface IEnterpriseAccountService {
 	public List<EnterpriseAccountVo> getAllEnterpriseAccounts(boolean includeDisabled, boolean includeDeleted);
 	public EnterpriseAccountVo getEnterpriseAccountbyId(long accountId);
 	public EnterpriseAccountVo getEnterpriseAccountbyName(String accountName);
-	public EnterpriseAccountVo createEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
-	public EnterpriseAccountVo updateEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
-	public EnterpriseAccountVo deleteEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
-	public EnterpriseAccountVo disableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
-	public EnterpriseAccountVo enableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
+	public void createEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
+	public void updateEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
+	public void deleteEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
+	public void disableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
+	public void enableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo);
 	
 	public List<EnterpriseSubaccountVo> getAllEnterpriseSubaccounts(long parentAccountId, boolean includeDisabled, boolean includeDeleted);
 	public EnterpriseSubaccountVo getEnterpriseSubaccountbyId(long subaccountId);
-	public EnterpriseSubaccountVo createEnterpriseSubAccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
-	public EnterpriseSubaccountVo updateEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
-	public EnterpriseSubaccountVo deleteEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
-	public EnterpriseSubaccountVo disableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
-	public EnterpriseSubaccountVo enableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
+	public void createEnterpriseSubAccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
+	public void updateEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
+	public void deleteEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
+	public void disableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
+	public void enableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo);
 }

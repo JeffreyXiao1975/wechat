@@ -108,9 +108,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="${pageContext.request.contextPath}/platform/queryUser.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.usersetting"/></a></li>
-                <li><a href="${pageContext.request.contextPath}/platform/authorizationSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.permissionsetting"/></a></li>
-                <li><a href="${pageContext.request.contextPath}/platform/systemSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.systemsetting"/></a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/platform/platformUserSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.usersetting"/></a></li>
+                <li><a href="${pageContext.request.contextPath}/platform/platformRoleSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.permissionsetting"/></a></li>
+                <li><a href="${pageContext.request.contextPath}/platform/platformSystemSetting.do" target="ifrm_content"><i class="fa fa-circle-o"></i><spring:message code="wechat.platform.systemsetting"/></a></li>
               </ul>
             </li>
             <li>

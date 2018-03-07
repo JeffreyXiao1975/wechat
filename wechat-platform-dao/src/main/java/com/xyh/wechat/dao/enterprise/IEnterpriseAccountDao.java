@@ -9,11 +9,11 @@ public interface IEnterpriseAccountDao {
 	public List<WxEnterpriseAccount> getAllEnterpriseAccounts(boolean includeDisabled, boolean includeDeleted);
 	public WxEnterpriseAccount getEnterpriseAccountbyId(long accountId);
 	public WxEnterpriseAccount getEnterpriseAccountbyName(String accountName);
-	public WxEnterpriseAccount createEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount);
-	public WxEnterpriseAccount updateEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount);
+	public void createEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount);
+	public void updateEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount);
 	
 	public List<WxEnterpriseSubaccount> getAllEnterpriseSubaccounts(long parentAccountId, boolean includeDisabled, boolean includeDeleted);
 	public WxEnterpriseSubaccount getEnterpriseSubaccountbyId(long subaccountId);
-	public WxEnterpriseSubaccount createEnterpriseSubAccount(WxEnterpriseSubaccount wxEnterpriseSubaccount);
-	public WxEnterpriseSubaccount updateEnterpriseSubaccount(WxEnterpriseSubaccount wxEnterpriseSubaccount);
+	public void createEnterpriseSubAccount(WxEnterpriseSubaccount wxEnterpriseSubaccount);
+	public void updateEnterpriseSubaccount(WxEnterpriseSubaccount wxEnterpriseSubaccount);
 }

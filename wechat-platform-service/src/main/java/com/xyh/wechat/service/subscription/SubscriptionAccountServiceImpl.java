@@ -54,16 +54,15 @@ public class SubscriptionAccountServiceImpl extends BaseService implements ISubs
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public SubscriptionAccountVo createSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
+	public void createSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
 		WxSubscriptionAccount wxSubscriptionAccount = null;
 		
 		wxSubscriptionAccount = SubscriptionAccountConvertor.convertToEntity(subscriptionAccountVo);
-		wxSubscriptionAccount = subscriptionAccountDao.createSubscriptionAccount(wxSubscriptionAccount);
-		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
+		subscriptionAccountDao.createSubscriptionAccount(wxSubscriptionAccount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public SubscriptionAccountVo updateSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
+	public void updateSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
 		WxSubscriptionAccount wxSubscriptionAccount = null;
 		
 		wxSubscriptionAccount = subscriptionAccountDao.getSubscriptionAccountbyId(subscriptionAccountVo.getId());
@@ -72,38 +71,34 @@ public class SubscriptionAccountServiceImpl extends BaseService implements ISubs
 			wxSubscriptionAccount.setAccountDesc(subscriptionAccountVo.getAccountDesc());
 			wxSubscriptionAccount.setDisabled(subscriptionAccountVo.isDisabled());
 			wxSubscriptionAccount.setDeleted(subscriptionAccountVo.isDeleted());
-			wxSubscriptionAccount = subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
+			subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
 		}
-		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public SubscriptionAccountVo deleteSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
+	public void deleteSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
 		WxSubscriptionAccount wxSubscriptionAccount = null;
 		
 		wxSubscriptionAccount = subscriptionAccountDao.getSubscriptionAccountbyId(subscriptionAccountVo.getId());
 		wxSubscriptionAccount.setDeleted(true);
-		wxSubscriptionAccount = subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
-		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
+		subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public SubscriptionAccountVo disableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
+	public void disableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
 		WxSubscriptionAccount wxSubscriptionAccount = null;
 		
 		wxSubscriptionAccount = subscriptionAccountDao.getSubscriptionAccountbyId(subscriptionAccountVo.getId());
 		wxSubscriptionAccount.setDisabled(true);
-		wxSubscriptionAccount = subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
-		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
+		subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public SubscriptionAccountVo enableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
+	public void enableSubscriptionAccount(SubscriptionAccountVo subscriptionAccountVo) {
 		WxSubscriptionAccount wxSubscriptionAccount = null;
 		
 		wxSubscriptionAccount = subscriptionAccountDao.getSubscriptionAccountbyId(subscriptionAccountVo.getId());
 		wxSubscriptionAccount.setDisabled(false);
-		wxSubscriptionAccount = subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
-		return SubscriptionAccountConvertor.convertToVo(wxSubscriptionAccount);
+		subscriptionAccountDao.updateSubscriptionAccount(wxSubscriptionAccount);
 	}
 }

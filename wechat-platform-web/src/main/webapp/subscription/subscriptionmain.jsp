@@ -110,7 +110,7 @@
     <div style="height:5px;margin-left:20px;">&nbsp;</div>
 	<div style="margin-left:20px;">&nbsp;<spring:message code="wechat.subscription.account"/></div>
 	<div style="height:5px;margin-left:20px;">&nbsp;</div>
-	<form:form id="frmSubscriptionMain" action="subscriptionmain.do" method="POST" cssStyle="width:100%" commandName="querySubscriptionAccountCriteriaModel">
+	<form:form id="frmSubscriptionMain" action="subscriptionmain.do" method="POST" cssStyle="width:100%" commandName="subscriptionAccountCriteriaModel">
 	  <div style="top:20px; margin-left:20px; border:1px solid #333">
 	    <form:checkbox path="disabled" value="1"/><spring:message code="checkbox.disabled"/>
 	    <form:checkbox path="deleted" value="1"/><spring:message code="checkbox.deleted"/>
@@ -125,8 +125,8 @@
 	          <img id="img-new-subscription-account" onclick="openlayer('${pageContext.request.contextPath}/subscription/createSubscriptionAccount.do', 2, '<spring:message code="wechat.subscription.account"/>', '500px', '300px');" title="<spring:message code="wechat.subscription.account.new"/>" src="${pageContext.request.contextPath}/images/new.png" style="width:100%; height:100%; cursor:pointer;"/>
 	        </div>
           </div>
-	      <c:if test="${not empty querySubscriptionAccountCriteriaModel.subscriptionAccountList}">
-	        <c:forEach items="${querySubscriptionAccountCriteriaModel.subscriptionAccountList}" var="subscriptionAccountVo">
+	      <c:if test="${not empty subscriptionAccountCriteriaModel.subscriptionAccountList}">
+	        <c:forEach items="${subscriptionAccountCriteriaModel.subscriptionAccountList}" var="subscriptionAccountVo">
 	          <c:if test="${subscriptionAccountVo.disabled == false}">
 	            <c:if test="${subscriptionAccountVo.deleted == false}">
 	              <div class="col-sm-2">

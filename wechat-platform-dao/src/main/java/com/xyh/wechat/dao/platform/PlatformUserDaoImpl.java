@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.xyh.wechat.dao.BaseDao;
 import com.xyh.wechat.dao.platform.IPlatformUserDao;
 import com.xyh.wechat.jpa.entities.WxPlatformUser;
-import com.xyh.wechat.vo.platform.QueryPlatformUserCriteriaVo;
+import com.xyh.wechat.vo.platform.PlatformUserCriteriaVo;
 
 @Component("platformUserDao")
 @Scope("singleton")
@@ -32,14 +32,30 @@ public class PlatformUserDaoImpl extends BaseDao implements IPlatformUserDao{
 		return wxPlatformUser;
 	}
 	
-	public long queryPlatformUserCount(QueryPlatformUserCriteriaVo queryFlatformUserCriteriaVo) {
+	public long queryPlatformUserCount(PlatformUserCriteriaVo platformUserCriteriaVo) {
 		long userCount = 0;
-		String username = "";
+		String strSQL = "";
 		
 		try {
-			Query query = this.entityManager.createQuery("select count(wxPlatformUser) from WxPlatformUser as wxPlatformUser where wxPlatformUser.username like :username");
-			if (queryFlatformUserCriteriaVo.getUsername() != null) username = queryFlatformUserCriteriaVo.getUsername();
-			query.setParameter("username", "%" + username + "%");
+			strSQL = "select count(wxPlatformUser) from WxPlatformUser as wxPlatformUser where wxPlatformUser.username like :username";
+			if (platformUserCriteriaVo.isDisabledIncluded()) {
+				if (!platformUserCriteriaVo.isDeletedIncluded()) {
+					strSQL = strSQL + "wxPlatformRole.deleted = 0 ";
+				}
+			} else {
+				if (platformUserCriteriaVo.isDeletedIncluded()) {
+					strSQL = strSQL + " and wxPlatformRole.disabled = 0 ";
+				} else {
+					strSQL = strSQL + " and wxPlatformRole.disabled = 0 and wxPlatformRole.deleted = 0 ";
+				}
+			}
+			
+			Query query = this.entityManager.createQuery(strSQL);
+			if (platformUserCriteriaVo.getUsername() != null) {
+				query.setParameter("username", "%" + platformUserCriteriaVo.getUsername() + "%");
+			} else {
+				query.setParameter("username", "%%");
+			}
 			userCount = ((Long) query.getSingleResult()).longValue();
 		} catch (Exception ex) {
 			logger.error(ex);
@@ -49,17 +65,33 @@ public class PlatformUserDaoImpl extends BaseDao implements IPlatformUserDao{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<WxPlatformUser> queryPlatformUsers(QueryPlatformUserCriteriaVo queryFlatformUserCriteriaVo) {
-		String username = "";
+	public List<WxPlatformUser> queryPlatformUsers(PlatformUserCriteriaVo platformUserCriteriaVo) {
+		String strSQL = "";
 		int pageNumber, pageSize;
 		List<WxPlatformUser> lWxPlatformUsers =  null;
 		
 		try {
-			Query query = this.entityManager.createQuery("select wxPlatformUser from WxPlatformUser as wxPlatformUser where wxPlatformUser.username like :username");
-			if (queryFlatformUserCriteriaVo.getUsername() != null) username = queryFlatformUserCriteriaVo.getUsername();
-			query.setParameter("username", "%" + username + "%");
-			pageSize = queryFlatformUserCriteriaVo.getPageSize();
-			pageNumber = (new Long(queryFlatformUserCriteriaVo.getPageNumber())).intValue();
+			strSQL = "select wxPlatformUser from WxPlatformUser as wxPlatformUser where wxPlatformUser.username like :username";
+			if (platformUserCriteriaVo.isDisabledIncluded()) {
+				if (!platformUserCriteriaVo.isDeletedIncluded()) {
+					strSQL = strSQL + "wxPlatformRole.deleted = 0 ";
+				}
+			} else {
+				if (platformUserCriteriaVo.isDeletedIncluded()) {
+					strSQL = strSQL + " and wxPlatformRole.disabled = 0 ";
+				} else {
+					strSQL = strSQL + " and wxPlatformRole.disabled = 0 and wxPlatformRole.deleted = 0 ";
+				}
+			}
+			
+			Query query = this.entityManager.createQuery(strSQL);
+			if (platformUserCriteriaVo.getUsername() != null) {
+				query.setParameter("username", "%" + platformUserCriteriaVo.getUsername() + "%");
+			} else {
+				query.setParameter("username", "%%");
+			}
+			pageSize = platformUserCriteriaVo.getPageSize();
+			pageNumber = (new Long(platformUserCriteriaVo.getPageNumber())).intValue();
 			if (pageNumber > 1) {
 				if (query.getMaxResults() > (pageNumber -1) * pageSize) {
 					query.setFirstResult((pageNumber -1) * pageSize + 1);
@@ -110,5 +142,33 @@ public class PlatformUserDaoImpl extends BaseDao implements IPlatformUserDao{
 			return result;
 		}
 		return result;
+	}
+	
+	public WxPlatformUser getPlatformUserById(long platformUserId) {
+		WxPlatformUser wxPlatformUser = null;
+		
+		try {
+			wxPlatformUser = this.entityManager.find(WxPlatformUser.class, platformUserId);
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
+		
+		return wxPlatformUser;
+	}
+	
+	public void createPlatformUser(WxPlatformUser wxPlatformUser) {
+		try {
+			this.entityManager.persist(wxPlatformUser);
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
+	}
+	
+	public void updatePlatformUser(WxPlatformUser wxPlatformUser) {
+		try {
+			this.entityManager.merge(wxPlatformUser);
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
 	}
 }

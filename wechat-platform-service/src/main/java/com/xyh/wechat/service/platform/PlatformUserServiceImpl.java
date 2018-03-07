@@ -18,7 +18,7 @@ import com.xyh.wechat.service.BaseService;
 import com.xyh.wechat.service.platform.IPlatformUserService;
 import com.xyh.wechat.convertor.platform.PlatformUserConvertor;
 import com.xyh.wechat.vo.platform.PlatformUserVo;
-import com.xyh.wechat.web.model.platform.QueryPlatformUserCriteriaModel;
+import com.xyh.wechat.web.model.platform.PlatformUserCriteriaModel;
 
 /**
  * 
@@ -39,18 +39,18 @@ public class PlatformUserServiceImpl extends BaseService implements IPlatformUse
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
-	public long queryPlatformUserCount(QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel) {
+	public long queryPlatformUserCount(PlatformUserCriteriaModel platformUserCriteriaModel) {
 		long userCount = 0;
-		userCount = platformUserDao.queryPlatformUserCount(PlatformUserConvertor.convertToVo(queryPlatformUserCriteriaModel));
+		userCount = platformUserDao.queryPlatformUserCount(PlatformUserConvertor.convertToVo(platformUserCriteriaModel));
 		return userCount;
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS)
-	public List<PlatformUserVo> queryPlatformUsers(QueryPlatformUserCriteriaModel queryPlatformUserCriteriaModel) {
+	public List<PlatformUserVo> queryPlatformUsers(PlatformUserCriteriaModel platformUserCriteriaModel) {
 		List<PlatformUserVo> lUserVos = null;
 		List<WxPlatformUser> lWxPlatformUsers = null;
 		
-		lWxPlatformUsers = platformUserDao.queryPlatformUsers(PlatformUserConvertor.convertToVo(queryPlatformUserCriteriaModel));
+		lWxPlatformUsers = platformUserDao.queryPlatformUsers(PlatformUserConvertor.convertToVo(platformUserCriteriaModel));
 		if (lWxPlatformUsers != null && lWxPlatformUsers.size() > 0) {
 			lUserVos = new ArrayList<PlatformUserVo>();
 			Iterator<WxPlatformUser> iterator = lWxPlatformUsers.iterator();
@@ -61,5 +61,58 @@ public class PlatformUserServiceImpl extends BaseService implements IPlatformUse
 		}
 		
 		return lUserVos;
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void createPlatformUser(PlatformUserVo platformUserVo) {
+		WxPlatformUser wxPlatformUser = null;
+		
+		wxPlatformUser = PlatformUserConvertor.convertToEntity(platformUserVo);
+		platformUserDao.createPlatformUser(wxPlatformUser);
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void updatePlatformUser(PlatformUserVo platformUserVo) {
+		WxPlatformUser wxPlatformUser = null;
+		
+		wxPlatformUser = platformUserDao.getPlatformUserById(platformUserVo.getId());
+		if (wxPlatformUser != null) {
+			wxPlatformUser.setUsername(platformUserVo.getUsername());
+			wxPlatformUser.setPassword(platformUserVo.getPassword());
+			platformUserDao.updatePlatformUser(wxPlatformUser);
+		}
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void deletePlatformUser(PlatformUserVo platformUserVo) {
+		WxPlatformUser wxPlatformUser = null;
+		
+		wxPlatformUser = platformUserDao.getPlatformUserById(platformUserVo.getId());
+		if (wxPlatformUser != null) {
+			wxPlatformUser.setDeleted(true);
+			platformUserDao.updatePlatformUser(wxPlatformUser);
+		}
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void disablePlatformUser(PlatformUserVo platformUserVo) {
+		WxPlatformUser wxPlatformUser = null;
+		
+		wxPlatformUser = platformUserDao.getPlatformUserById(platformUserVo.getId());
+		if (wxPlatformUser != null) {
+			wxPlatformUser.setDisabled(true);
+			platformUserDao.updatePlatformUser(wxPlatformUser);
+		}
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void enablePlatformUser(PlatformUserVo platformUserVo) {
+		WxPlatformUser wxPlatformUser = null;
+		
+		wxPlatformUser = platformUserDao.getPlatformUserById(platformUserVo.getId());
+		if (wxPlatformUser != null) {
+			wxPlatformUser.setDisabled(false);
+			platformUserDao.updatePlatformUser(wxPlatformUser);
+		}
 	}
 }

@@ -61,16 +61,15 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseAccountVo createEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
+	public void createEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		
 		wxEnterpriseAccount = EnterpriseAccountConvertor.convertToEntity(enterpriseAccountVo);
-		wxEnterpriseAccount = enterpriseAccountDao.createEnterpriseAccount(wxEnterpriseAccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
+		enterpriseAccountDao.createEnterpriseAccount(wxEnterpriseAccount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseAccountVo updateEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
+	public void updateEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		
 		wxEnterpriseAccount = enterpriseAccountDao.getEnterpriseAccountbyId(enterpriseAccountVo.getId());
@@ -79,14 +78,12 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 			wxEnterpriseAccount.setAccountDesc(enterpriseAccountVo.getAccountDesc());
 			wxEnterpriseAccount.setDisabled(enterpriseAccountVo.isDisabled());
 			wxEnterpriseAccount.setDeleted(enterpriseAccountVo.isDeleted());
-			wxEnterpriseAccount = enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
+			enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
 		}
-		
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseAccountVo deleteEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
+	public void deleteEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		List<WxEnterpriseSubaccount> wxEnterpriseSubaccounts = null;
 		
@@ -101,12 +98,11 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 			}
 		}
 		wxEnterpriseAccount.setDeleted(true);
-		wxEnterpriseAccount = enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
+		enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseAccountVo disableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
+	public void disableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		List<WxEnterpriseSubaccount> wxEnterpriseSubaccounts = null;
 		
@@ -121,18 +117,16 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 			}
 		}
 		wxEnterpriseAccount.setDisabled(true);
-		wxEnterpriseAccount = enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
+		enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseAccountVo enableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
+	public void enableEnterpriseAccount(EnterpriseAccountVo enterpriseAccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		
 		wxEnterpriseAccount = enterpriseAccountDao.getEnterpriseAccountbyId(enterpriseAccountVo.getId());
 		wxEnterpriseAccount.setDisabled(false);
-		wxEnterpriseAccount = enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseAccount);
+		enterpriseAccountDao.updateEnterpriseAccount(wxEnterpriseAccount);
 	}
 
 	@Transactional(propagation = Propagation.SUPPORTS)
@@ -164,7 +158,7 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseSubaccountVo createEnterpriseSubAccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
+	public void createEnterpriseSubAccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;
 
@@ -172,13 +166,12 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 		if (wxEnterpriseAccount != null) {
 			wxEnterpriseSubaccount = EnterpriseAccountConvertor.convertToEntity(enterpriseSubaccountVo);
 			wxEnterpriseSubaccount.setParentAccount(wxEnterpriseAccount);
-			wxEnterpriseSubaccount = enterpriseAccountDao.createEnterpriseSubAccount(wxEnterpriseSubaccount);
+			enterpriseAccountDao.createEnterpriseSubAccount(wxEnterpriseSubaccount);
 		}
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseSubaccountVo updateEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
+	public void updateEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
 		WxEnterpriseAccount wxEnterpriseAccount = null;
 		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;
 
@@ -191,40 +184,36 @@ public class EnterpriseAccountServiceImpl extends BaseService implements IEnterp
 				wxEnterpriseSubaccount.setSubaccountDesc(enterpriseSubaccountVo.getSubaccountDesc());
 				wxEnterpriseSubaccount.setDisabled(enterpriseSubaccountVo.isDisabled());
 				wxEnterpriseSubaccount.setDeleted(enterpriseSubaccountVo.isDeleted());
-				wxEnterpriseSubaccount = enterpriseAccountDao.createEnterpriseSubAccount(wxEnterpriseSubaccount);
+				enterpriseAccountDao.createEnterpriseSubAccount(wxEnterpriseSubaccount);
 			}
 		}
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseSubaccountVo deleteEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
+	public void deleteEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
 		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;		
 		
 		wxEnterpriseSubaccount = enterpriseAccountDao.getEnterpriseSubaccountbyId(enterpriseSubaccountVo.getId());
 		wxEnterpriseSubaccount.setDeleted(true);
-		wxEnterpriseSubaccount = enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
+		enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
 		
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseSubaccountVo disableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
+	public void disableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
 		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;		
 		
 		wxEnterpriseSubaccount = enterpriseAccountDao.getEnterpriseSubaccountbyId(enterpriseSubaccountVo.getId());
 		wxEnterpriseSubaccount.setDisabled(true);
-		wxEnterpriseSubaccount = enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
+		enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public EnterpriseSubaccountVo enableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
+	public void enableEnterpriseSubaccount(EnterpriseSubaccountVo enterpriseSubaccountVo) {
 		WxEnterpriseSubaccount wxEnterpriseSubaccount = null;		
 		
 		wxEnterpriseSubaccount = enterpriseAccountDao.getEnterpriseSubaccountbyId(enterpriseSubaccountVo.getId());
 		wxEnterpriseSubaccount.setDisabled(false);
-		wxEnterpriseSubaccount = enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
-		return EnterpriseAccountConvertor.convertToVo(wxEnterpriseSubaccount);
+		enterpriseAccountDao.updateEnterpriseSubaccount(wxEnterpriseSubaccount);
 	}
 }

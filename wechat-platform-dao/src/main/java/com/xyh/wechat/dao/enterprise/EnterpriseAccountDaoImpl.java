@@ -44,17 +44,20 @@ public class EnterpriseAccountDaoImpl extends BaseDao implements IEnterpriseAcco
 		return lWxEnterpriseAccounts;
 	}
 
-	public WxEnterpriseAccount createEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount) {
+	public void createEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount) {
 		try {
 			this.entityManager.persist(wxEnterpriseAccount);
 		} catch (Exception ex) {
 			logger.error(ex);
 		}
-		return wxEnterpriseAccount;
 	}
 
-	public WxEnterpriseAccount updateEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount) {
-		return this.entityManager.merge(wxEnterpriseAccount);
+	public void updateEnterpriseAccount(WxEnterpriseAccount wxEnterpriseAccount) {
+		try {
+			this.entityManager.merge(wxEnterpriseAccount);
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
 	}
 
 	public WxEnterpriseAccount getEnterpriseAccountbyId(long accountId) {
@@ -119,16 +122,19 @@ public class EnterpriseAccountDaoImpl extends BaseDao implements IEnterpriseAcco
 		return wxEnterpriseSubaccount;
 	}
 
-	public WxEnterpriseSubaccount createEnterpriseSubAccount(WxEnterpriseSubaccount wxEnterpriseSubaccount) {
+	public void createEnterpriseSubAccount(WxEnterpriseSubaccount wxEnterpriseSubaccount) {
 		try {
 			this.entityManager.persist(wxEnterpriseSubaccount);
 		} catch (Exception ex) {
 			logger.error(ex);
 		}
-		return wxEnterpriseSubaccount;
 	}
 
-	public WxEnterpriseSubaccount updateEnterpriseSubaccount(WxEnterpriseSubaccount wxEnterpriseSubaccount) {
-		return this.entityManager.merge(wxEnterpriseSubaccount);
+	public void updateEnterpriseSubaccount(WxEnterpriseSubaccount wxEnterpriseSubaccount) {
+		try {
+			this.entityManager.merge(wxEnterpriseSubaccount);
+		} catch (Exception ex) {
+			logger.error(ex);
+		}
 	}
 }

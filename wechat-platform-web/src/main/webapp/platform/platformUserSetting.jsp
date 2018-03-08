@@ -112,7 +112,7 @@
     
     <div style="height:10px;margin-left:10px;"></div>
     <div class="container-fluid" style="margin-left:0px;">
-	  <form:form id="frmQueryPlatformUser" action="queryUser.do" method="POST" class="form-inline" commandName="platformUserCriteriaModel">
+	  <form:form id="frmQueryPlatformUser" action="platformUserSetting.do" method="POST" class="form-inline" commandName="platformUserCriteriaModel">
 	    <div class="col-md-12">
           <div class="form-group">
             <label for="username"><spring:message code="wechat.platform.usersetting.username"/>&nbsp;</label>
@@ -140,8 +140,8 @@
 	          </tr>
 	        </thead>
 	        <tbody>
-	          <c:if test="${not empty queryPlatformUserCriteriaModel.userlist}">
-	            <c:forEach items="${queryPlatformUserCriteriaModel.userlist}" var="platformUserVo">
+	          <c:if test="${not empty platformUserCriteriaModel.userlist}">
+	            <c:forEach items="${platformUserCriteriaModel.userlist}" var="platformUserVo">
 	              <tr>
 	                <td>&nbsp;<c:out value="${platformUserVo.id}"/></td>
 	                <td>&nbsp;<c:out value="${platformUserVo.username}"/></td>
@@ -206,8 +206,8 @@
             <a href="#" style="text-decoration:none;" title="<spring:message code="page.last"/>">
               <i class="fas fa-fast-forward"></i>
             </a>&nbsp;
-            <spring:message code="page.current"/>:&nbsp;<c:out value="${queryPlatformUserCriteriaModel.currentPageNumber}"></c:out>&nbsp;&nbsp;&nbsp;&nbsp;
-            <spring:message code="page.total"/>:&nbsp;<c:out value="${queryPlatformUserCriteriaModel.totalPageNumber}"></c:out>&nbsp;&nbsp;&nbsp;&nbsp;
+            <spring:message code="page.current"/>:&nbsp;<c:out value="${platformUserCriteriaModel.currentPageNumber}"></c:out>&nbsp;&nbsp;&nbsp;&nbsp;
+            <spring:message code="page.total"/>:&nbsp;<c:out value="${platformUserCriteriaModel.totalPageNumber}"></c:out>&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" style="text-decoration:none;" title="<spring:message code="button.create"/>">
               <i class="fas fa-plus-square"></i>
             </a>&nbsp;

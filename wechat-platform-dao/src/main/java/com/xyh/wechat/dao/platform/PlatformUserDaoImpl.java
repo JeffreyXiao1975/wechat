@@ -40,13 +40,13 @@ public class PlatformUserDaoImpl extends BaseDao implements IPlatformUserDao{
 			strSQL = "select count(wxPlatformUser) from WxPlatformUser as wxPlatformUser where wxPlatformUser.username like :username";
 			if (platformUserCriteriaVo.isDisabledIncluded()) {
 				if (!platformUserCriteriaVo.isDeletedIncluded()) {
-					strSQL = strSQL + "wxPlatformRole.deleted = 0 ";
+					strSQL = strSQL + "wxPlatformUser.deleted = 0 ";
 				}
 			} else {
 				if (platformUserCriteriaVo.isDeletedIncluded()) {
-					strSQL = strSQL + " and wxPlatformRole.disabled = 0 ";
+					strSQL = strSQL + " and wxPlatformUser.disabled = 0 ";
 				} else {
-					strSQL = strSQL + " and wxPlatformRole.disabled = 0 and wxPlatformRole.deleted = 0 ";
+					strSQL = strSQL + " and wxPlatformUser.disabled = 0 and wxPlatformUser.deleted = 0 ";
 				}
 			}
 			
@@ -74,13 +74,13 @@ public class PlatformUserDaoImpl extends BaseDao implements IPlatformUserDao{
 			strSQL = "select wxPlatformUser from WxPlatformUser as wxPlatformUser where wxPlatformUser.username like :username";
 			if (platformUserCriteriaVo.isDisabledIncluded()) {
 				if (!platformUserCriteriaVo.isDeletedIncluded()) {
-					strSQL = strSQL + "wxPlatformRole.deleted = 0 ";
+					strSQL = strSQL + "wxPlatformUser.deleted = 0 ";
 				}
 			} else {
 				if (platformUserCriteriaVo.isDeletedIncluded()) {
-					strSQL = strSQL + " and wxPlatformRole.disabled = 0 ";
+					strSQL = strSQL + " and wxPlatformUser.disabled = 0 ";
 				} else {
-					strSQL = strSQL + " and wxPlatformRole.disabled = 0 and wxPlatformRole.deleted = 0 ";
+					strSQL = strSQL + " and wxPlatformUser.disabled = 0 and wxPlatformUser.deleted = 0 ";
 				}
 			}
 			

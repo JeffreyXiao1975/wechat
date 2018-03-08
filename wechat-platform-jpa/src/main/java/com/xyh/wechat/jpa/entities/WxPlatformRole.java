@@ -28,6 +28,15 @@ public class WxPlatformRole extends WxBaseEntity {
 	@Column(name="role_name")
 	private String rolename;
 	
+	@Column(name="role_desc")
+	private String roledesc;
+	
+	@Column(name="is_disabled")
+	private boolean disabled;
+	
+	@Column(name="is_deleted")
+	private boolean deleted;
+	
 	@Column(name="created_time", insertable=false, updatable=false)
 	private Timestamp createdTime;
 	
@@ -94,5 +103,47 @@ public class WxPlatformRole extends WxBaseEntity {
 	 */
 	public void setAdgroups(Set<WxPlatformADGroup> adgroups) {
 		this.adgroups = adgroups;
+	}
+
+	/**
+	 * @return the roledesc
+	 */
+	public String getRoledesc() {
+		return roledesc;
+	}
+
+	/**
+	 * @param roledesc the roledesc to set
+	 */
+	public void setRoledesc(String roledesc) {
+		this.roledesc = roledesc;
+	}
+
+	/**
+	 * @return the deleted
+	 */
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	/**
+	 * @param deleted the deleted to set
+	 */
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	/**
+	 * @return the disabled
+	 */
+	public boolean isDisabled() {
+		return disabled;
+	}
+
+	/**
+	 * @param disabled the disabled to set
+	 */
+	public void setDisabled(boolean disabled) {
+		this.disabled = disabled;
 	}
 }

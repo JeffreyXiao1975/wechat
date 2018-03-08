@@ -4,6 +4,7 @@ import com.xyh.wechat.convertor.BaseConvertor;
 import com.xyh.wechat.jpa.entities.WxPlatformLegalEntity;
 import com.xyh.wechat.jpa.entities.WxSubscriptionAccount;
 import com.xyh.wechat.vo.subscription.SubscriptionAccountVo;
+import com.xyh.wechat.web.model.subscription.SubscriptionAccountModel;
 
 public class SubscriptionAccountConvertor extends BaseConvertor {
 	public static SubscriptionAccountVo convertToVo(WxSubscriptionAccount wxSubscriptionAccount) {
@@ -19,6 +20,23 @@ public class SubscriptionAccountConvertor extends BaseConvertor {
 			subscriptionAccountVo.setDeleted(wxSubscriptionAccount.isDeleted());
 			subscriptionAccountVo.setCreatedTime(wxSubscriptionAccount.getCreatedTime().toString());
 			subscriptionAccountVo.setUpdatedTime(wxSubscriptionAccount.getUpdatedTime().toString());
+		}
+		return subscriptionAccountVo;
+	}
+	
+	public static SubscriptionAccountVo convertToVo(SubscriptionAccountModel subscriptionAccountModel) {
+		SubscriptionAccountVo subscriptionAccountVo = null;
+		
+		if (subscriptionAccountModel != null) {
+			subscriptionAccountVo = new SubscriptionAccountVo();
+			subscriptionAccountVo.setId(subscriptionAccountModel.getId());
+			subscriptionAccountVo.setLegalEntityId(subscriptionAccountModel.getLegalEntityId());
+			subscriptionAccountVo.setAccountName(subscriptionAccountModel.getAccountName());
+			subscriptionAccountVo.setAccountDesc(subscriptionAccountModel.getAccountDesc());
+			subscriptionAccountVo.setDisabled(subscriptionAccountModel.isDisabled());
+			subscriptionAccountVo.setDeleted(subscriptionAccountModel.isDeleted());
+			subscriptionAccountVo.setCreatedTime(subscriptionAccountModel.getCreatedTime());
+			subscriptionAccountVo.setUpdatedTime(subscriptionAccountModel.getUpdatedTime());
 		}
 		return subscriptionAccountVo;
 	}

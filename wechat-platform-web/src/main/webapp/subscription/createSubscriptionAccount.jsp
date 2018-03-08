@@ -15,27 +15,18 @@
     <script src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
     <script type="text/javascript">
     	var index = parent.layer.getFrameIndex(window.name);
-    
-    	$(function() {
-    		<c:if test="${not empty result}">
-    		    //alert("Serice account was created successfully!");
-    		</c:if>
-    		<c:if test="${empty result}">
-		    	//alert("Serice account was created!");
-			</c:if>
-    	});
     </script>
   </head>
 
   <body style="overflow:hidden">
     <div class="container-fluid" style="margin-left:0px;">
-      <form:form id="frmUpdateServiceAccount" action="viewServiceAccount.do" method="POST" cssStyle="width:100%" commandName="serviceAccountModel">
-        <div class="form-inline">
+      <form:form id="frmCreateSubscriptionAccount" action="createSubscriptionAccount.do" method="POST" cssStyle="width:100%" commandName="subscriptionAccountModel">
+	    <div class="form-inline">
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <label for="new_service_account_leId"><spring:message code="wechat.service.account.le"/></label>
-                <form:select id="new_service_account_leId" path="legalEntityId">
+                <label for="account_leId"><spring:message code="wechat.subscription.account.le"/></label>
+                <form:select id="account_leId" path="legalEntityId">
 	              <form:option value="0" label="Select"/>
 	              <form:options items="${legalEntities}" />
 	            </form:select>
@@ -46,33 +37,30 @@
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <label for="accountName"><spring:message code="wechat.service.account.name"/></label>
+                <label for="accountName"><spring:message code="wechat.subscription.account.name"/></label>
                 <form:input path="accountName" maxlength="100"/>
               </div>
             </div>
           </div>
-      
+          
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <label for="accountDesc"><spring:message code="wechat.service.account.desc"/></label>
+                <label for="accountDesc"><spring:message code="wechat.subscription.account.desc"/></label>
                 <form:textarea path="accountDesc" maxlength="1024"/>
               </div>
             </div>
           </div>
-	 
+          
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <form:hidden path="id" />
-                <form:hidden path="disabled" />
-	            <form:hidden path="deleted" />
-	            <a href="${pageContext.request.contextPath}/platform/updateServiceAccount.do?id=${subscriptionAccountModel.id}" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.update"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	            <a href="#" onclick="$('#frmCreateSubscriptionAccount').submit();" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.create"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 <a href="#" onclick="parent.layer.close(index);" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.cancel"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
               </div>
             </div>
           </div>
-	    </div>
+        </div>
 	  </form:form>
 	</div>
   </body>

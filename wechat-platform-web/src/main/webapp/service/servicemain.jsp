@@ -127,7 +127,7 @@
 	    <div class="row">
 	      <div class="col-sm-2">
 	        <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-              <div style="position:absolute; width:150px; height:100px; top:0; left:0; z-index:1;background:white;">
+              <div style="position:absolute; width:150px; height:100px; top:0px; left:0px; z-index:1;background:white;">
                 <div style="display:inline-block;position:relative;width:150px;height:100px;background:lightgray;text-align:center;line-height:100px;overflow:hidden;">
                   <a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/createServiceAccount.do', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="wechat.service.account.new"/>">
                     <i class="fas fa-plus-square"></i>
@@ -142,8 +142,8 @@
 	            <c:if test="${serviceAccountVo.deleted == false}">
 	              <div class="col-sm-2">
                     <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-                      <div style="position:absolute; width:150px; height:100px; top:0; left:0; z-index:1;background:green;">
-                        <div style="display:inline-block;position:relative;width:150px;height:100px;background-color:green;text-align:center;line-height:100px;overflow:hidden;">
+                      <div style="position:absolute; width:150px; height:78px; top:22px; left:0px; z-index:1;background:green;">
+                        <div style="display:inline-block;position:relative;width:150px;height:78px;background-color:green;text-align:center;line-height:78px;overflow:hidden;">
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>
@@ -167,8 +167,8 @@
 	            <c:if test="${serviceAccountVo.deleted == true}">
 	              <div class="col-sm-2">
                     <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-                      <div style="position:absolute; width:150px; height:100px; top:0; left:0; z-index:1;background:gray;">
-                        <div style="display:inline-block;position:relative;width:150px;height:100px;background:gray;text-align:center;line-height:100px;overflow:hidden;">
+                      <div style="position:absolute; width:150px; height:78px; top:22px; left:0px; z-index:1;background:gray;">
+                        <div style="display:inline-block;position:relative;width:150px;height:78px;background:gray;text-align:center;line-height:78px;overflow:hidden;">
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>
@@ -185,8 +185,8 @@
 	            <c:if test="${serviceAccountVo.deleted == false}">
 	              <div class="col-sm-2">
                     <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-                      <div style="position:absolute; width:150px; height:100px; top:0; left:0; z-index:1;background:lightgray;">
-                        <div style="display:inline-block;position:relative;width:150px;height:100px;background:lightgray;text-align:center;line-height:100px;overflow:hidden;">
+                      <div style="position:absolute; width:150px; height:78px; top:22px; left:0px; z-index:1;background:lightgray;">
+                        <div style="display:inline-block;position:relative;width:150px;height:78px;background:lightgray;text-align:center;line-height:78px;overflow:hidden;">
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>
@@ -207,8 +207,8 @@
 	            <c:if test="${serviceAccountVo.deleted == true}">
 	              <div class="col-sm-2">
                     <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-                      <div style="position:absolute; width:150px; height:100px; top:0; left:0; z-index:1;background:gray;">
-                        <div style="display:inline-block;position:relative;width:150px;height:100px;background:gray;text-align:center;line-height:100px;overflow:hidden;">
+                      <div style="position:absolute; width:150px; height:78px; top:22px; left:0px; z-index:1;background:gray;">
+                        <div style="display:inline-block;position:relative;width:150px;height:78px;background:gray;text-align:center;line-height:78px;overflow:hidden;">
                           <c:out value="${serviceAccountVo.accountName}"/>
                         </div>
                       </div>

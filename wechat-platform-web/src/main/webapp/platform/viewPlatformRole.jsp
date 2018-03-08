@@ -22,13 +22,13 @@
   </head>
   <body style="overflow:hidden">
     <div class="container-fluid" style="margin-left:0px;">
-      <form:form id="frmUpdatePlatformUser" action="updatePlatformUser.do" method="POST" class="form-inline" commandName="platformUserModel">
+      <form:form id="frmUpdatePlatformUser" action="updatePlatformUser.do" method="POST" class="form-inline" commandName="platformRoleModel">
         <div class="form-inline">
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <label for="username"><spring:message code="wechat.platform.usersetting.username"/></label>
-                <form:input id="username" path="username" size="20" maxlength="10" autofocus/>
+                <label for="rolename"><spring:message code="wechat.platform.rolesetting.rolename"/></label>
+                <form:input id="rolename" path="rolename" size="20" maxlength="10" autofocus/>
                 <form:hidden path="id"/>
               </div>
             </div>
@@ -36,8 +36,8 @@
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <a href="#" onclick="$('#frmUpdatePlatformUser').submit();" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.update"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                <a href="#" onclick="parent.layer.close(index);" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.cancel"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="${pageContext.request.contextPath}/platform/updatePlatformRole.do?id=${platformRoleModel.id}" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.update"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#" onclick="parent.layer.close(index);" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.close"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
               </div>
             </div>
           </div>

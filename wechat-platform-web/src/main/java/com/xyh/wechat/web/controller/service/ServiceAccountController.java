@@ -30,6 +30,7 @@ import com.xyh.wechat.vo.platform.PlatformLegalEntityVo;
 import com.xyh.wechat.vo.service.ServiceAccountVo;
 import com.xyh.wechat.web.model.service.ServiceAccountCriteriaModel;
 import com.xyh.wechat.web.model.service.ServiceAccountModel;
+import com.xyh.wechat.web.util.ResourceBundleUtil;
 import com.xyh.wechat.web.validator.service.ServiceAccountValidator;
 
 @Controller
@@ -79,7 +80,6 @@ public class ServiceAccountController {
 		ServiceAccountVo serviceAccountVo = ServiceAccountConvertor.convertToVo(serviceAccountModel);
 		serviceAccountService.createServiceAccount(serviceAccountVo);
 		serviceAccountVo = serviceAccountService.getServiceAccountbyName(serviceAccountVo.getAccountName());
-		serviceAccountModel = ServiceAccountConvertor.convertToModel(serviceAccountVo);
 		return "redirect:viewServiceAccount.do?result=CreatedSuccessfully&id=" + serviceAccountVo.getId();
 	}
 	
@@ -146,6 +146,8 @@ public class ServiceAccountController {
 				//the service account has been marked as deleted by others
 				modelMap.put("success", "false");
 				modelMap.put("message", "The service account has been deleted by others!");
+				
+				//ResourceBundleUtil.getMessage(request, messageKey)
 			} else {
 				if (serviceAccountVo.isDisabled()) {
 					serviceAccountService.enableServiceAccount(serviceAccountVo);
@@ -254,5 +256,4 @@ public class ServiceAccountController {
 
 		return legalEntities;
 	}
-
 }

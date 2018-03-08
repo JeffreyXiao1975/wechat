@@ -56,27 +56,27 @@ public class PlatformRoleController {
 	}
 	
 	@RequestMapping(value="/platform/createPlatformRole", method=RequestMethod.GET)
-	public void initCreateUserForm(ModelMap model) {
+	public void initCreatePlatformRoleForm(ModelMap model) {
 		
 	}
 	
 	@RequestMapping(value="/platform/createPlatformRole", method=RequestMethod.POST)
-	public String postCreateUserForm(HttpSession httpSession, @ModelAttribute("platformRoleModel") @Valid PlatformRoleModel platformRoleModel, BindingResult result, ModelMap model) {
+	public String postCreatePlatformRoleForm(HttpSession httpSession, @ModelAttribute("platformRoleModel") @Valid PlatformRoleModel platformRoleModel, BindingResult result, ModelMap model) {
 		return "";
 	}
 	
 	@RequestMapping(value="/platform/viewPlatformRole", method=RequestMethod.GET)
-	public void initViewUserForm(HttpServletRequest request, ModelMap model) {
+	public void initViewPlatformRoleForm(HttpServletRequest request, ModelMap model) {
 		
 	}
 	
-	@RequestMapping(value="/platform/updatePlatformUser", method=RequestMethod.GET)
-	public void initUpdateUserForm(HttpServletRequest request, ModelMap model) {
+	@RequestMapping(value="/platform/updatePlatformRole", method=RequestMethod.GET)
+	public void initUpdatePlatformRoleForm(HttpServletRequest request, ModelMap model) {
 		
 	}
 	
 	@RequestMapping(value="/platform/updatePlatformRole", method=RequestMethod.POST)
-	public void postUpdateUserForm(HttpSession httpSession, @ModelAttribute("platformRoleModel") @Valid PlatformRoleModel platformRoleModel, BindingResult result, ModelMap model) {
+	public void postUpdatePlatformRoleForm(HttpSession httpSession, @ModelAttribute("platformRoleModel") @Valid PlatformRoleModel platformRoleModel, BindingResult result, ModelMap model) {
 		
 	}
 	

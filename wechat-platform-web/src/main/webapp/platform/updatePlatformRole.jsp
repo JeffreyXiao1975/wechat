@@ -6,6 +6,9 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/fontawesome-all.css"/>
@@ -14,54 +17,32 @@
     <script src="${pageContext.request.contextPath}/js/layer.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.form.js"></script>
     <script type="text/javascript">
-    	var index = parent.layer.getFrameIndex(window.name);
+      	var index = parent.layer.getFrameIndex(window.name);
     </script>
   </head>
-
   <body style="overflow:hidden">
     <div class="container-fluid" style="margin-left:0px;">
-      <form:form id="frmCreateServiceAccount" action="createServiceAccount.do" method="POST" cssStyle="width:100%" commandName="serviceAccountModel">
-	    <div class="form-inline">
+      <form:form id="frmUpdatePlatformRole" action="updatePlatformRole.do" method="POST" class="form-inline" commandName="platformRoleModel">
+        <div class="form-inline">
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <label for="new_service_account_leId"><spring:message code="wechat.service.account.le"/></label>
-                <form:select id="new_service_account_leId" path="legalEntityId">
-	              <form:option value="0" label="Select"/>
-	              <form:options items="${legalEntities}" />
-	            </form:select>
+                <label for="rolename"><spring:message code="wechat.platform.rolesetting.rolename"/></label>
+                <form:input id="username" path="rolename" size="20" maxlength="10" autofocus/>
+                <form:hidden path="id"/>
               </div>
             </div>
           </div>
-          
           <div class="row" style="margin-top:10px;">
             <div class="col-md-12 controls">
               <div class="form-group">
-                <label for="accountName"><spring:message code="wechat.service.account.name"/></label>
-                <form:input path="accountName" maxlength="100"/>
-              </div>
-            </div>
-          </div>
-          
-          <div class="row" style="margin-top:10px;">
-            <div class="col-md-12 controls">
-              <div class="form-group">
-                <label for="accountDesc"><spring:message code="wechat.service.account.desc"/></label>
-                <form:textarea path="accountDesc" maxlength="1024"/>
-              </div>
-            </div>
-          </div>
-          
-          <div class="row" style="margin-top:10px;">
-            <div class="col-md-12 controls">
-              <div class="form-group">
-	            <a href="#" onclick="$('#frmCreateServiceAccount').submit();" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.create"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <a href="#" onclick="$('#frmUpdatePlatformRole').submit();" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.update"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
                 <a href="#" onclick="parent.layer.close(index);" class="btn btn-success">&nbsp;&nbsp;&nbsp;&nbsp;<spring:message code="button.cancel"/>&nbsp;&nbsp;&nbsp;&nbsp;</a>
               </div>
             </div>
           </div>
         </div>
-	  </form:form>
-	</div>
+      </form:form>
+    </div>
   </body>
 </html>

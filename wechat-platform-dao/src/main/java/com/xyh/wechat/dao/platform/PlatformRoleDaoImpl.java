@@ -19,7 +19,7 @@ public class PlatformRoleDaoImpl extends BaseDao implements IPlatformRoleDao {
 		long userCount = 0;
 		String strSQL = "";
 		try {
-			strSQL = "select count(wxPlatformRole) from WxPlatformRole as wxPlatformUser where wxPlatformRole.rolename like :rolename ";
+			strSQL = "select count(wxPlatformRole) from WxPlatformRole as wxPlatformRole where wxPlatformRole.rolename like :rolename ";
 			if (platformRoleCriteriaVo.isDisabledIncluded()) {
 				if (!platformRoleCriteriaVo.isDeletedIncluded()) {
 					strSQL = strSQL + " wxPlatformRole.deleted = 0 ";

@@ -127,13 +127,14 @@
 	    <div class="row">
 	      <div class="col-sm-2">
 	        <div style="position:relative;width:150px;height:100px; margin-bottom:20px;box-shadow: 5px 5px 2px #888888;">
-              <div style="position:absolute; width:150px; height:100px; top:0px; left:0px; z-index:1;background:white;">
-                <div style="display:inline-block;position:relative;width:150px;height:100px;background:lightgray;text-align:center;line-height:100px;overflow:hidden;">
+              <div style="position:absolute; width:150px; height:78px; top:22px; left:0px; z-index:1;background:white;">
+                <div style="display:inline-block;position:relative;width:150px;height:78px;background:lightgray;text-align:center;line-height:78px;overflow:hidden;">
                   <a href="#" onclick="openlayer('${pageContext.request.contextPath}/service/createServiceAccount.do', 2, '<spring:message code="wechat.service.account"/>', '500px', '300px');" style="text-decoration:none;" title="<spring:message code="wechat.service.account.new"/>">
-                    <i class="fas fa-plus-square"></i>
+                    <i class="fas fa-plus-square" style="font-size:30px;"></i>
                   </a>
                 </div>
               </div>
+              <div style="position:absolute; width:150px; height:22px; top:0px; right:0px; z-index:2; background:yellow;">&nbsp;</div>
             </div>
           </div>
 	      <c:if test="${not empty serviceAccountCriteriaModel.serviceAccountList}">

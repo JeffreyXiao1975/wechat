@@ -111,22 +111,22 @@ public class ServiceAccountController {
 			if (serviceAccountVo.isDeleted()) {
 				//the service account has been marked as deleted by others
 				modelMap.put("success", "false");
-				modelMap.put("message", "The service account has been deleted by others!");
+				modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.deleted.by.other"));
 			} else {
 				if (serviceAccountVo.isDisabled()) {
 					//the service account has been marked as disabled by others
 					modelMap.put("success", "false");
-					modelMap.put("message", "The service account has been disabled by others!");
+					modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.disabled.by.other"));
 				} else {
 					serviceAccountService.disableServiceAccount(serviceAccountVo);
 					modelMap.put("success", "true");
-					modelMap.put("message", "The service account was disabled successfully!");
+					modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.disabled.successfully"));
 				}
 			}
 		} else {
 			//the service account has been physically deleted by others
 			modelMap.put("success", "false");
-			modelMap.put("message", "The service account has been physically deleted by others!");
+			modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.physically.deleted.by.other"));
 		}
 		
 		return modelMap;
@@ -145,25 +145,25 @@ public class ServiceAccountController {
 			if (serviceAccountVo.isDeleted()) {
 				//the service account has been marked as deleted by others
 				modelMap.put("success", "false");
-				modelMap.put("message", "The service account has been deleted by others!");
+				modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.delete.by.other"));
 				
 				//ResourceBundleUtil.getMessage(request, messageKey)
 			} else {
 				if (serviceAccountVo.isDisabled()) {
 					serviceAccountService.enableServiceAccount(serviceAccountVo);
 					modelMap.put("success", "false");
-					modelMap.put("message", "The service account was enabled successfully!");
+					modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.enabled.successfully"));
 				} else {
 					//the service account has been enabled by others
 					modelMap.put("success", "false");
-					modelMap.put("message", "The service account has been enabled by others!");
+					modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.enabled.by.other"));
 				}
 			}
 			
 		} else {
 			//the service account has been physically deleted by others
 			modelMap.put("success", "false");
-			modelMap.put("message", "The service account has been physically deleted by others!");
+			modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.physically.deleted.by.other"));
 		}
 		
 		return modelMap;
@@ -189,13 +189,13 @@ public class ServiceAccountController {
 			} else {
 				serviceAccountService.deleteServiceAccount(serviceAccountVo);
 				modelMap.put("success", "false");
-				modelMap.put("message", "The service account was disabled successfully!");
+				modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.disabled.successfully"));
 			}
 			
 		} else {
 			//the service account has been physically deleted by others
 			modelMap.put("success", "false");
-			modelMap.put("message", "The service account has been physically deleted by others!");
+			modelMap.put("message", ResourceBundleUtil.getMessage(request, "wechat.service.account.physically.deleted.by.other"));
 		}
 		
 		return modelMap;

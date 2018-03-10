@@ -20,5 +20,4 @@ public class ResourceBundleUtil {
 		
 		return resourceBundle.getString(messageKey);
 	}
-
 }
